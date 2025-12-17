@@ -1,7 +1,8 @@
-📋 Project Overview
+## Smart Home Device System
+📋 ## Project Overview
 A C++ object-oriented programming demonstration implementing a smart home device management system using inheritance and polymorphism.
 
-🏗️ Architecture
+🏗️ ## Architecture
 Device (Abstract Base Class): Core class with common attributes (ID, name, manufacturer)
 
 SecurityCamera: Manages security cameras with quality and power settings
