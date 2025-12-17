@@ -82,6 +82,21 @@ public:
     }
 };
 
+class DoorLock : public Device
+{
+private:
+    bool locked;
+    string last_opened;
+
+public:
+    DoorLock(bool locked, string last_opened, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), locked(locked), last_opened(last_opened) {}
+
+    void interaction_event()
+    {
+        // add the appropriate output
+    }
+};
+
 int main()
 {
 }
