@@ -21,6 +21,48 @@ public:
     virtual void interaction_event() = 0;
 };
 
+class SecurityCamera : public Device
+{
+private:
+    string camera_quality;
+    string power;
+
+public:
+    SecurityCamera(string cam_quality, string pwr, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), camera_quality(cam_quality), power(pwr) {}
+
+    void interaction_event() override
+    {
+        cout << "Now viewing camera:" << device_name;
+    }
+};
+
+class AirConditioning : public Device
+{
+private:
+    unsigned int target_temperature;
+
+public:
+    AirConditioning(int target_temp, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), target_temperature(target_temp) {}
+
+    void interaction_event() override
+    {
+        cout << "Current Air Condition temperature: " << target_temperature << "°C" << endl;
+        cout << "Set a new temperature: ";
+        cin >> target_temperature;
+        cout << "Target Temperature set to: " << target_temperature << endl;
+    }
+};
+
+class Projector : public Device
+{
+private:
+    string input_source;
+    unsigned short brightness_level;
+
+public:
+    Projector(string input_src, unsigned short brightness_lvl, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), input_source(input_src), brightness_level(brightness_lvl) {}
+};
+
 int main()
 {
 }
