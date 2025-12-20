@@ -13,17 +13,27 @@ protected:
 
 public:
     // constructor to initialize parameters for Device
-    Device(unsigned int id, string name, string manufacturer, bool status) : unique_number_id(id), device_name(name), manufacturer(manufacturer) {}
+    Device(unsigned int id, string name, string manufacturer, bool status) : unique_number_id(id), device_name(name), manufacturer(manufacturer), status(false) {}
 
     // destructor is initialised for safe polymorphic deletion and ensures correct clean up=
     virtual ~Device() {}
 
+    // if device is activated the appropriate message is shown
+    void Activate()
+    {
+        status = true;
+        cout << device_name << "is activated..";
+    }
+
+    // if device is deactivated the appropriate message is shown
+    void Deactivate()
+    {
+        status = false;
+        cout << device_name << "is not activated.. ";
+    }
+
     // this method will be called and override each class with the appropriate output
     virtual void interaction_event() = 0;
-
-    // methods for active and deactive
-    virtual void Active() = 0;
-    virtual void Deactive() = 0;
 };
 
 class SecurityCamera : public Device
