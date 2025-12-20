@@ -20,6 +20,9 @@ public:
 
     // this method will be called and override each class with the appropriate output
     virtual void interaction_event() = 0;
+
+    virtual void Active() = 0;
+    virtual void Deactive() = 0;
 };
 
 class SecurityCamera : public Device
