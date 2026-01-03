@@ -93,7 +93,7 @@ private:
 public:
     Projector(string input_src, unsigned short brightness_lvl, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), input_source(input_src), brightness_level(brightness_lvl) {}
 
-    void interaction_event()
+    void interaction_event() override
     {
         if (!status)
         {
