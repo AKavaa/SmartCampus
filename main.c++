@@ -102,7 +102,9 @@ public:
         }
         else
         {
-            // add the appropriate statement
+            cout << "Projector Control :" << device_name << endl;
+            cout << "Source input :" << input_source << endl;
+            cout << "Brightness input :" << brightness_level << "%" << endl;
         }
     }
 };
