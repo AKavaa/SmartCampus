@@ -20,6 +20,6 @@ int main()
     cout << "4. Room Lightning" << endl;
     cout << "5. Door Lock" << endl;
     cout << "0. Exit System" << endl;
-    cout << "Select Device :" << endl;
+    cout << "Select Device :";
     cin >> choice;
 }

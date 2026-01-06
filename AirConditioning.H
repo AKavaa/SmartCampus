@@ -26,7 +26,7 @@ public:
             cout << "Current Air Condition temperature: " << target_temperature << "°C" << endl;
             cout << "Set a new temperature: ";
             cin >> target_temperature;
-            cout << "Target Temperature set to: " << target_temperature << endl;
+            cout << "Target Temperature set to: " << target_temperature << "°C" << endl;
         }
     }
 };

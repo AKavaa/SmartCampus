@@ -25,7 +25,7 @@ public:
     void Activate()
     {
         status = true;
-        cout << device_name << "is activated..";
+        cout << device_name << " is activated..";
     }
 
     // if device is deactivated the appropriate message is shown
