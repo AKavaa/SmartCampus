@@ -7,8 +7,6 @@
 #include <vector>
 #include "Device.H"
 
-using namespace std;
-
 class DeviceManager
 {
 
@@ -20,28 +18,13 @@ private:
 
 public:
     // calling this in main and the program will be running
-    void RunProgram()
-    {
-        // Creating default objects and adding them into the device vector using a unique pointer
-        // Unique pointers automatically manage memory and push_back adds the devices into the vector
-        devices.push_back(make_unique<Projector>("HDMI", 25, 2, "ProjectorCool", "SONY"));
-    }
+    void RunProgram();
 
     // will be showing the menu for the Smart Campus
-    void ShowMenu()
-    {
-        cout << " ====== All the available devices ======" << endl;
-        for (int i = 0; i < devices.size(); i++)
-        {
-
-            // move to the next section of the menu
-            cout << "Device" << i + 1 << ":" << endl;
-            devices[i]->ViewInfo(); // call ViewInfo function through a pointer, so the implementation is correct at runtime
-        }
-    }
+    void ShowMenu();
+    void ChoiceHandling(int choice);
 
     // user will be able to input and choose what to do inside the program
-    void ChoiceHandling();
 };
 
 #endif
