@@ -1,5 +1,5 @@
-#include "DeviceManager.h"
-#include "Projector.H"
+#include "../HeaderFiles/DeviceManager.h"
+#include "../HeaderFiles/Projector.H"
 #include <iostream>
 
 using namespace std;
