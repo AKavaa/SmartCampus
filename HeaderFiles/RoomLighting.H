@@ -1,5 +1,5 @@
-#ifndef ROOMLIGHTING
-#define ROOMLIGHTING
+#ifndef ROOMLIGHTING_H
+#define ROOMLIGHTING_H
 
 #include <iostream>
 #include <string>

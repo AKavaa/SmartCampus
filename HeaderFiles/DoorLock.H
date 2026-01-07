@@ -1,6 +1,6 @@
 
-#ifndef DOORLOCK
-#define DOORLOCK
+#ifndef DOORLOCK_H
+#define DOORLOCK_H
 
 #include <iostream>
 #include <string>
@@ -10,10 +10,10 @@ class DoorLock : public Device
 {
 private:
     bool locked;
-    std::string last_opened;
+    std::string last_opened_by;
 
 public:
-    DoorLock(bool locked, std::string last_opened, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), locked(locked), last_opened(last_opened) {}
+    DoorLock(bool locked, std::string last_opened_by, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), locked(locked), last_opened_by(last_opened_by) {}
 
     void interaction_event()
     {
@@ -27,6 +27,9 @@ public:
             // add the appropriate statement
         }
     }
+
+    void Activate();
+    void Deactivate();
 };
 
 #endif
