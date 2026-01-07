@@ -33,7 +33,10 @@ public:
         cout << " ====== All the available devices ======" << endl;
         for (int i = 0; i < devices.size(); i++)
         {
-            cout << &devices[i];
+
+            // move to the next section of the menu
+            cout << "Device" << i + 1 << ":" << endl;
+            devices[i]->ViewInfo(); // call ViewInfo function through a pointer, so the implementation is correct at runtime
         }
     }
 
