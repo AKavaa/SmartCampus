@@ -21,7 +21,7 @@ public:
     // destructor is initialised for safe polymorphic deletion and ensures correct clean up=
     virtual ~Device() {}
 
-    // view info method
+    // view info method, check each Device's information
     virtual void ViewInfo()
     {
 
