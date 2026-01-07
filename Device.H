@@ -32,7 +32,7 @@ public:
     void Deactivate()
     {
         status = false;
-        cout << device_name << "is deactivated.. ";
+        cout << device_name << " is deactivated.. ";
     }
 
     // this method will be called and override each class with the appropriate output
