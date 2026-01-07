@@ -14,7 +14,7 @@ private:
     // stores all the devices using polymorphic container
     // this allows different device type to be stored a unique pointer
     // using the unique pointer allows automatic memory handling and ownership
-    vector<unique_ptr<Device>> devices;
+    std::vector<std::unique_ptr<Device>> devices;
 
 public:
     // calling this in main and the program will be running

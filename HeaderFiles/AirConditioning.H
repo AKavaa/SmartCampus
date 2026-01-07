@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include "Device.H"
-using namespace std;
 
 class AirConditioning : public Device
 {
@@ -12,21 +11,21 @@ private:
     unsigned int target_temperature;
 
 public:
-    AirConditioning(int target_temp, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), target_temperature(target_temp) {}
+    AirConditioning(int target_temp, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), target_temperature(target_temp) {}
 
     void interaction_event() override
     {
         if (!status)
         {
-            cout << "Current device is inactive!" << endl;
+            std::cout << "Current device is inactive!" << std::endl;
             return;
         }
         else
         {
-            cout << "Current Air Condition temperature: " << target_temperature << "°C" << endl;
-            cout << "Set a new temperature: ";
-            cin >> target_temperature;
-            cout << "Target Temperature set to: " << target_temperature << "°C" << endl;
+            std::cout << "Current Air Condition temperature: " << target_temperature << "°C" << std::endl;
+            std::cout << "Set a new temperature: ";
+            std::cin >> target_temperature;
+            std::cout << "Target Temperature set to: " << target_temperature << "°C" << std::endl;
         }
     }
 };

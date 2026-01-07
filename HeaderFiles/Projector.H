@@ -4,51 +4,50 @@
 #include <iostream>
 #include <string>
 #include "Device.H"
-using namespace std;
 
 class Projector : public Device
 {
 private:
-    string input_source;
+    std::string input_source;
     unsigned short brightness_level;
 
 public:
-    Projector(string input_src, unsigned short brightness_lvl, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), input_source(input_src), brightness_level(brightness_lvl) {}
+    Projector(std::string input_src, unsigned short brightness_lvl, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), input_source(input_src), brightness_level(brightness_lvl) {}
 
     void interaction_event() override
     {
         if (!status)
         {
-            cout << "Current device is inactive!" << endl;
+            std::cout << "Current device is inactive!" << std::endl;
             return;
         }
         else
         {
-            cout << "Projector Control :" << device_name << endl;
-            cout << "Source input :" << input_source << endl;
-            cout << "Brightness input :" << brightness_level << "%" << endl;
+            std::cout << "Projector Control :" << device_name << std::endl;
+            std::cout << "Source input :" << input_source << std::endl;
+            std::cout << "Brightness input :" << brightness_level << "%" << std::endl;
         }
 
         int input_choice;
-        cout << "Choose Option:" << endl;
-        cout << "1. Change Input Source | 2. Adjust Brightness level" << endl;
-        cin >> input_choice;
+        std::cout << "Choose Option:" << std::endl;
+        std::cout << "1. Change Input Source | 2. Adjust Brightness level" << std::endl;
+        std::cin >> input_choice;
 
         if (input_choice == 1)
         {
-            cout << "Enter Input Source (HDMI, VGA, wireless):";
-            cin >> input_source;
-            cout << "Input Source changes to :" << input_source << endl;
+            std::cout << "Enter Input Source (HDMI, VGA, wireless):";
+            std::cin >> input_source;
+            std::cout << "Input Source changes to :" << input_source << std::endl;
         }
         else if (input_choice == 2)
         {
-            cout << "Enter Preferred Brightness Level (0 - 100%):" << endl;
-            cin >> brightness_level;
-            cout << " Brightness Level Set To : " << brightness_level << "%" << endl;
+            std::cout << "Enter Preferred Brightness Level (0 - 100%):" << std::endl;
+            std::cin >> brightness_level;
+            std::cout << " Brightness Level Set To : " << brightness_level << "%" << std::endl;
         }
         else
         {
-            cout << "Invalid option selected!" << endl;
+            std::cout << "Invalid option selected!" << std::endl;
         }
     }
 };

@@ -3,27 +3,26 @@
 
 #include "Device.H"
 #include <string>
-using namespace std;
 
 class SecurityCamera : public Device
 {
 private:
-    string camera_quality;
-    string power;
+    std::string camera_quality;
+    std::string power;
 
 public:
-    SecurityCamera(string cam_quality, string pwr, unsigned int id, string name, string manufacturer) : Device(id, name, manufacturer), camera_quality(cam_quality), power(pwr) {}
+    SecurityCamera(std::string cam_quality, std::string pwr, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), camera_quality(cam_quality), power(pwr) {}
 
     void interaction_event() override
     {
         if (!status)
         {
-            cout << "Current device is inactive!" << endl;
+            std::cout << "Current device is inactive!" << std::endl;
             return;
         }
         else
         {
-            cout << "Now viewing camera:" << device_name;
+            std::cout << "Now viewing camera:" << device_name;
         }
     }
 };
