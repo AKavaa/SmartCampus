@@ -1,7 +1,13 @@
 #include "../HeaderFiles/DeviceManager.h"
 #include "../HeaderFiles/Projector.H"
-#include <iostream>
+#include "../HeaderFiles/Device.H"
+#include "../HeaderFiles/SecurityCamera.H"
+#include "../HeaderFiles/Projector.H"
+#include "../HeaderFiles/AirConditioning.H"
+#include "../HeaderFiles/RoomLighting.H"
+#include "../HeaderFiles/DeviceManager.h"
 
+#include <iostream>
 using namespace std;
 
 // Creating default objects and adding them into the device vector using a unique pointer
@@ -10,6 +16,7 @@ void DeviceManager::RunProgram()
 {
 
     devices.push_back(make_unique<Projector>("HDMI", 25, 2, "ProjectorCool", "SONY"));
+    devices.push_back(make_unique<SecurityCamera>("FULL HD", "200 wat", 2, "Secure-Cam", "LOGITECH"));
 
     int choice = 0;
 
