@@ -24,12 +24,10 @@ public:
     virtual void ViewInfo()
     {
 
-        std::cout << "====== Device Information =====" << std::endl;
         std::cout << "ID:" << unique_number_id << std::endl;
         std::cout << "Name:" << device_name << std::endl;
         std::cout << "Manufacturer:" << manufacturer << std::endl;
-        std::cout << "Status: " << (status ? "Active" : "Inactive") << std::endl; // if Status is true then output it Active, else Inactive
-        std::cout << "==============================" << std::endl;
+        std::cout << "Status: " << (status ? "Active" : "Inactive \n") << std::endl; // if Status is true then output it Active, else Inactive
     }
 
     // if device is activated the appropriate message is shown

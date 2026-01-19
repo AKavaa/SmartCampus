@@ -41,11 +41,13 @@ void DeviceManager::ChoiceHandling(int choice)
     switch (choice)
     {
     case 1:
+        cout << "====== Device Information ======" << std::endl;
         // looping to show all the devices
         for (int i = 0; i < devices.size(); i++)
         {
             devices[i]->ViewInfo();
         }
+        cout << "==============================" << std::endl;
         break;
 
     case 2:
