@@ -14,7 +14,7 @@
 void DeviceManager::RunProgram()
 {
 
-    devices.push_back(std::make_unique<Projector>("HDMI", 25, 2, "ProjectorCool", "SONY"));
+    devices.push_back(std::make_unique<Projector>("HDMI", 25, 1, "ProjectorCool", "SONY"));
     devices.push_back(std::make_unique<SecurityCamera>("FULL HD", "200 wat", 2, "Secure-Cam", "LOGITECH"));
 
     int choice = 0;
@@ -53,6 +53,7 @@ void DeviceManager::ChoiceHandling(int choice)
     case 2:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
+        return;
         break;
 
     default:

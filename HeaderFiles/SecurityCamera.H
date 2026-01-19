@@ -17,16 +17,8 @@ public:
 
     void interaction_event() override
     {
-        if (!status)
-        {
-            std::cout << "Current device is inactive!" << std::endl;
-            return;
-        }
-        else
-        {
-            std::cout << "Now viewing camera:" << device_name;
-        }
     }
-};
 
+    void ViewInfo() {}
+};
 #endif
