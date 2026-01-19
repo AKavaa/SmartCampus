@@ -21,7 +21,6 @@ void DeviceManager::RunProgram()
 
     ShowMenu();
     std::cin >> choice;
-
     ChoiceHandling(choice);
     // checks users input and based on what the user presses the specific output is shown
 }
@@ -53,27 +52,30 @@ void DeviceManager::ChoiceHandling(int choice)
 
     case 2:
     {
-        unsigned int targer_device;
+        unsigned int target_device;
         std::cout << "Enter the number ID of the device you want to interact with: ";
-        std::cin >> targer_device;
+        std::cin >> target_device;
 
         bool device_found = false;
 
         for (int i = 0; i < devices.size(); i++)
         {
+            // devices[i]->ViewInfo();
 
             // Getter check if the device is the correct one
-            if (devices[i]->Get_id() == targer_device)
+            if (devices[i]->Get_id() == target_device)
             {
+                std::cout << "\n Interacting with device ID: " << target_device << std::endl;
                 devices[i]->interaction_event(); // the device will trigger the inputed interaction event
+
                 device_found = true;
                 break;
             }
         }
 
-        if (device_found == false)
+        if (!device_found)
         {
-            std::cout << "Device with ID: " << targer_device << " was not found." << std::endl;
+            std::cout << "Device with ID: " << target_device << " was not found." << std::endl;
         }
         break;
     }

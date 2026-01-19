@@ -17,7 +17,11 @@ public:
 
     void interaction_event() override
     {
-        std::cout << "Camera Interaction triggered" << std::endl;
+        // std::cout << "Camera Interaction triggered" << std::endl;
+
+        std::cout << "Camera viewing:" << device_name << std::endl;
+        std::cout << "Camera Quality:" << camera_quality << std::endl;
+        std::cout << "Power:" << power << std::endl;
     }
 
     void ViewInfo() override;
