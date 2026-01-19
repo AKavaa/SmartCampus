@@ -9,11 +9,13 @@ SecurityCamera::SecurityCamera(std::string cam_quality, std::string pwr, unsigne
 void SecurityCamera::ViewInfo()
 {
 
-    if (!status)
-    {
-        std::cout << "Current device is inactive!" << std::endl;
-        return;
-    }
+    Device::ViewInfo(); // shows other details of a the device
+
+    // if (!status)
+    // {
+    //     std::cout << "Current device is inactive!" << std::endl;
+    //     return;
+    // }
 
     std::cout << "Camera viewing:" << device_name << std::endl;
     std::cout << "Camera Quality:" << camera_quality << std::endl;

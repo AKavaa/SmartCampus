@@ -21,6 +21,7 @@ public:
     virtual ~Device() {}
 
     // view info method, check each Device's information
+    // approach using polymorphism
     virtual void ViewInfo()
     {
 

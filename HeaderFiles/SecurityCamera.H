@@ -13,12 +13,13 @@ private:
 
 public:
     // initialising constructor
-    SecurityCamera(std::string cam_quality, std::string pwr, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), camera_quality(cam_quality), power(pwr) {}
+    SecurityCamera(std::string cam_quality, std::string pwr, unsigned int id, std::string name, std::string manufacturer);
 
     void interaction_event() override
     {
+        std::cout << "Camera Interaction triggered" << std::endl;
     }
 
-    // void ViewInfo() {}
+    void ViewInfo() override;
 };
 #endif
