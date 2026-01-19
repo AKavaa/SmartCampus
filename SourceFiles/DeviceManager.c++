@@ -8,20 +8,19 @@
 #include "../HeaderFiles/DeviceManager.h"
 
 #include <iostream>
-using namespace std;
 
 // Creating default objects and adding them into the device vector using a unique pointer
 // Unique pointers automatically manage memory and push_back adds the devices into the vector
 void DeviceManager::RunProgram()
 {
 
-    devices.push_back(make_unique<Projector>("HDMI", 25, 2, "ProjectorCool", "SONY"));
-    devices.push_back(make_unique<SecurityCamera>("FULL HD", "200 wat", 2, "Secure-Cam", "LOGITECH"));
+    devices.push_back(std::make_unique<Projector>("HDMI", 25, 2, "ProjectorCool", "SONY"));
+    devices.push_back(std::make_unique<SecurityCamera>("FULL HD", "200 wat", 2, "Secure-Cam", "LOGITECH"));
 
     int choice = 0;
 
     ShowMenu();
-    cin >> choice;
+    std::cin >> choice;
 
     ChoiceHandling(choice);
     // checks users input and based on what the user presses the specific output is shown
@@ -30,10 +29,10 @@ void DeviceManager::RunProgram()
 void DeviceManager::ShowMenu()
 {
 
-    cout << "====== Smart Campus Menu ======" << endl;
-    cout << "1. View all devices" << endl;
-    cout << "2. Exit" << endl;
-    cout << "Choose an option:";
+    std::cout << "====== Smart Campus Menu ======" << std::endl;
+    std::cout << "1. View all devices" << std::endl;
+    std::cout << "2. Exit" << std::endl;
+    std::cout << "Choose an option:";
 }
 
 void DeviceManager::ChoiceHandling(int choice)
@@ -41,24 +40,25 @@ void DeviceManager::ChoiceHandling(int choice)
     switch (choice)
     {
     case 1:
-        cout << "====== Device Information ======" << std::endl;
+        std::cout << "====== Device Information ====== \n"
+                  << std::endl;
         // looping to show all the devices
         for (int i = 0; i < devices.size(); i++)
         {
             devices[i]->ViewInfo();
         }
-        cout << "==============================" << std::endl;
+        std::cout << "==============================" << std::endl;
         break;
 
     case 2:
-        cout << "Program Exited.." << endl;
+        std::cout << "Program Exited.." << std::endl;
         exit(0);
         break;
 
     default:
-        cout
+        std::cout
             << "Invalid Choice..Please try again!"
-            << endl;
+            << std::endl;
         break;
     }
 }
