@@ -20,6 +20,13 @@ public:
     // destructor is initialised for safe polymorphic deletion and ensures correct clean up=
     virtual ~Device() {}
 
+    // Getter method so user can interact with a device
+    // const so hte compiler wont change any data
+    unsigned int Get_id() const
+    {
+        return unique_number_id;
+    }
+
     // view info method, check each Device's information
     // approach using polymorphism
     virtual void ViewInfo()

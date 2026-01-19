@@ -31,7 +31,8 @@ void DeviceManager::ShowMenu()
 
     std::cout << "====== Smart Campus Menu ======" << std::endl;
     std::cout << "1. View all devices" << std::endl;
-    std::cout << "2. Exit" << std::endl;
+    std::cout << "2. Interact with a device" << std::endl;
+    std::cout << "3. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -51,6 +52,33 @@ void DeviceManager::ChoiceHandling(int choice)
         break;
 
     case 2:
+    {
+        unsigned int targer_device;
+        std::cout << "Enter the number ID of the device you want to interact with: ";
+        std::cin >> targer_device;
+
+        bool device_found = false;
+
+        for (int i = 0; i < devices.size(); i++)
+        {
+
+            // Getter check if the device is the correct one
+            if (devices[i]->Get_id() == targer_device)
+            {
+                devices[i]->interaction_event(); // the device will trigger the inputed interaction event
+                device_found = true;
+                break;
+            }
+        }
+
+        if (device_found == false)
+        {
+            std::cout << "Device with ID: " << targer_device << " was not found." << std::endl;
+        }
+        break;
+    }
+
+    case 3:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
