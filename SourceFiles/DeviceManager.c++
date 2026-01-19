@@ -14,8 +14,9 @@
 void DeviceManager::RunProgram()
 {
 
-    devices.push_back(std::make_unique<Projector>("HDMI", 25, 1, "ProjectorCool", "SONY"));
-    devices.push_back(std::make_unique<SecurityCamera>("FULL HD", "200 wat", 2, "Secure-Cam", "LOGITECH"));
+    devices.push_back(std::make_unique<SecurityCamera>("FULL HD", "200 wat", 1, "Secure-Cam", "LOGITECH"));
+    devices.push_back(std::make_unique<AirConditioning>(20, 2, "AirConditioning", "AUX"));
+    devices.push_back(std::make_unique<Projector>("HDMI", 25, 3, "ProjectorCool", "SONY"));
 
     int choice = 0;
 

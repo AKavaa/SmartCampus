@@ -11,23 +11,23 @@ private:
     unsigned int target_temperature;
 
 public:
-    AirConditioning(int target_temp, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), target_temperature(target_temp) {}
+    AirConditioning(int target_temp, unsigned int id, std::string name, std::string manufacturer);
 
     void interaction_event() override
     {
-        if (!status)
-        {
-            std::cout << "Current device is inactive!" << std::endl;
-            return;
-        }
-        else
-        {
-            std::cout << "Current Air Condition temperature: " << target_temperature << "°C" << std::endl;
-            std::cout << "Set a new temperature: ";
-            std::cin >> target_temperature;
-            std::cout << "Target Temperature set to: " << target_temperature << "°C" << std::endl;
-        }
+        // if (!status)
+        // {
+        //     std::cout << "Current device is inactive!" << std::endl;
+        //     return;
+        // }
+
+        std::cout << "Current Air Condition temperature: " << target_temperature << "°C" << std::endl;
+        std::cout << "Set a new temperature: ";
+        std::cin >> target_temperature;
+        std::cout << "Target Temperature set to: " << target_temperature << "°C" << std::endl;
     }
+
+    void ViewInfo() override;
 };
 
 #endif
