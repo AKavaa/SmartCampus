@@ -16,6 +16,7 @@ public:
 
     void interaction_event() override
     {
+        std::cout << "Projector Interaction Triggered" << std::endl;
     }
 
     void ViewInfo() override;
