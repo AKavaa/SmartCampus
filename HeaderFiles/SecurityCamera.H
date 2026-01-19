@@ -19,6 +19,6 @@ public:
     {
     }
 
-    void ViewInfo() {}
+    // void ViewInfo() {}
 };
 #endif
