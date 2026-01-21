@@ -20,11 +20,9 @@ public:
             std::cout << "Current device is inactive!" << std::endl;
             return;
         }
-        else
-        {
-            // add the appropriate statement
-        }
     }
+
+    void ViewInfo() override;
 };
 
 #endif
