@@ -27,3 +27,8 @@ void RoomLighting::interaction_event()
 
     std::cout << "New brightness level set to:" << brightness_level << std::endl;
 }
+
+void RoomLighting::ViewInfo()
+{
+    std::cout << "Current brightness level: " << brightness_level << "%" << std::endl;
+}
