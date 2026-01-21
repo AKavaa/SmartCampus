@@ -3,6 +3,7 @@
 
 Projector::Projector(std::string input_src, unsigned short brightness_lvl, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), input_source(input_src), brightness_level(brightness_lvl) {}
 
+// intercation event so when user interacts with the device the according interaction and logic will be triggered
 void Projector::interaction_event()
 {
 
@@ -32,8 +33,10 @@ void Projector::interaction_event()
 void Projector::ViewInfo()
 {
 
+    // ViewInfo from the Device.H so information about the device is displayed as default
     Device::ViewInfo();
 
+    // specific information about the device
     std::cout
         << "Source input :" << input_source << std::endl;
     std::cout << "Brightness input :" << brightness_level << "%" << "\n"
