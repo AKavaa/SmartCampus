@@ -30,5 +30,6 @@ void RoomLighting::interaction_event()
 
 void RoomLighting::ViewInfo()
 {
+    Device::ViewInfo();
     std::cout << "Current brightness level: " << brightness_level << "%" << std::endl;
 }
