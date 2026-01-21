@@ -12,4 +12,18 @@ void RoomLighting::interaction_event()
         std::cout << "Current device is inactive!" << std::endl;
         return;
     }
+
+    std::cout << "Current Brightness level:" << brightness_level << "%" << std::endl;
+    std::cout << "Set new brightness level (0-100%):";
+    unsigned int new_brightness_level;
+    std::cin >> new_brightness_level;
+
+    if (new_brightness_level > 100)
+    {
+        std::cout << "Brightness in range, Saving current input" << std::endl;
+    }
+
+    brightness_level = new_brightness_level;
+
+    std::cout << "New brightness level set to:" << brightness_level << std::endl;
 }

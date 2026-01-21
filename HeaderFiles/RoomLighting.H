@@ -15,11 +15,11 @@ public:
 
     void interaction_event() override
     {
-        if (!status)
-        {
-            std::cout << "Current device is inactive!" << std::endl;
-            return;
-        }
+        // if (!status)
+        // {
+        //     std::cout << "Current device is inactive!" << std::endl;
+        //     return;
+        // }
     }
 
     void ViewInfo() override;
