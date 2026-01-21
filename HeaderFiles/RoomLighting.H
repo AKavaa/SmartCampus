@@ -13,7 +13,7 @@ private:
 public:
     RoomLighting(unsigned int brightness_lvl, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), brightness_level(brightness_lvl) {}
 
-    void interaction_event()
+    void interaction_event() override
     {
         if (!status)
         {
