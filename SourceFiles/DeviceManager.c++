@@ -62,7 +62,7 @@ void DeviceManager::DeactivateAllDevices()
 void DeviceManager::ShowMenu()
 {
 
-    std::cout << "====== Smart Campus Menu ======" << std::endl;
+    std::cout << "\n\n====== Smart Campus Menu ======" << std::endl;
     std::cout << "1. View all devices" << std::endl;
     std::cout << "2. Interact with a device" << std::endl;
     std::cout << "3. Activate all devices" << std::endl;
@@ -76,14 +76,15 @@ void DeviceManager::ChoiceHandling(int choice)
     switch (choice)
     {
     case 1:
-        std::cout << "====== Device Information ====== \n"
+        std::cout << " \n====== Device Information ====== \n"
                   << std::endl;
         // looping to show all the devices
         for (int i = 0; i < devices.size(); i++)
         {
             devices[i]->ViewInfo();
+            std::cout << "----------------------------" << std::endl;
         }
-        std::cout << "==============================" << std::endl;
+
         break;
 
     case 2:
