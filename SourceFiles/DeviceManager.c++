@@ -30,6 +30,7 @@ void DeviceManager::RunProgram()
 void DeviceManager::ActivateAllDevices()
 {
 
+    // using auto for cleaner syntax and for the compiler to work out the element type in runtime
     for (auto &dev : devices)
     {
         dev->Activate();
@@ -40,6 +41,7 @@ void DeviceManager::ActivateAllDevices()
 void DeviceManager::DeactivateAllDevices()
 {
 
+    // using auto for cleaner syntax and for the compiler to work out the element type in runtime
     for (auto &dev : devices)
     {
         dev->Deactivate();
