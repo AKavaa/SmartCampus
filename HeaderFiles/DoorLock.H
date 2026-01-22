@@ -13,23 +13,11 @@ private:
     std::string last_opened_by;
 
 public:
-    DoorLock(bool locked, std::string last_opened_by, unsigned int id, std::string name, std::string manufacturer) : Device(id, name, manufacturer), locked(locked), last_opened_by(last_opened_by) {}
+    DoorLock(bool locked, std::string last_opened_by, unsigned int id, std::string name, std::string manufacturer);
 
-    void interaction_event()
-    {
-        if (!status)
-        {
-            std::cout << "Current device is inactive!" << std::endl;
-            return;
-        }
-        else
-        {
-            // add the appropriate statement
-        }
-    }
+    void interaction_event() override;
 
-    void Activate();
-    void Deactivate();
+    void ViewInfo() override;
 };
 
 #endif

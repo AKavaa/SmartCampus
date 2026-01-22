@@ -5,6 +5,7 @@
 #include "../HeaderFiles/Projector.H"
 #include "../HeaderFiles/AirConditioning.H"
 #include "../HeaderFiles/RoomLighting.H"
+#include "../HeaderFiles/DoorLock.H"
 #include "../HeaderFiles/DeviceManager.h"
 
 #include <iostream>
@@ -18,6 +19,7 @@ void DeviceManager::RunProgram()
     devices.push_back(std::make_unique<AirConditioning>(20, 2, "AirConditioning", "AUX"));
     devices.push_back(std::make_unique<Projector>("HDMI", 25, 3, "ProjectorCool", "SONY"));
     devices.push_back(std::make_unique<RoomLighting>(50, 4, "MainRoomLighting", "Phillips"));
+    devices.push_back(std::make_unique<DoorLock>(true, "Admin", 5, "FrontDoor", "Braga"));
 
     int choice = 0;
 
@@ -33,6 +35,7 @@ void InteractDeviceMenu()
     std::cout << "[ID:2 - AirConditioning]" << std::endl;
     std::cout << "[ID:3 - Projector]" << std::endl;
     std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
 }
 void DeviceManager::ActivateAllDevices()
 {
@@ -87,7 +90,7 @@ void DeviceManager::ChoiceHandling(int choice)
     {
         unsigned int target_device;
         InteractDeviceMenu();
-        std::cout << "Enter the number ID (1-4) of the device you want to interact with: ";
+        std::cout << "Enter the number ID (1-5) of the device you want to interact with: ";
         std::cin >> target_device;
 
         bool device_found = false;
