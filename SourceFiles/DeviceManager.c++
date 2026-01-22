@@ -55,7 +55,7 @@ void DeviceManager::ChoiceHandling(int choice)
     case 2:
     {
         unsigned int target_device;
-        std::cout << "Enter the number ID of the device you want to interact with: ";
+        std::cout << "Enter the number ID (1-4) of the device you want to interact with: ";
         std::cin >> target_device;
 
         bool device_found = false;
