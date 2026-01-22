@@ -19,6 +19,8 @@ private:
 public:
     // calling this in main and the program will be running
     void RunProgram();
+    void ActivateAllDevices();
+    void DeactivateAllDevices();
 
     // will be showing the menu for the Smart Campus
     void ShowMenu();

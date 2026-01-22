@@ -27,13 +27,35 @@ void DeviceManager::RunProgram()
     // checks users input and based on what the user presses the specific output is shown
 }
 
+void DeviceManager::ActivateAllDevices()
+{
+
+    for (auto &dev : devices)
+    {
+        dev->Activate();
+        std::cout << "All devices are activated!" << std::endl;
+    }
+}
+
+void DeviceManager::DeactivateAllDevices()
+{
+
+    for (auto &dev : devices)
+    {
+        dev->Deactivate();
+        std::cout << "All devices are deactivated!" << std::endl;
+    }
+}
+
 void DeviceManager::ShowMenu()
 {
 
     std::cout << "====== Smart Campus Menu ======" << std::endl;
     std::cout << "1. View all devices" << std::endl;
     std::cout << "2. Interact with a device" << std::endl;
-    std::cout << "3. Exit" << std::endl;
+    std::cout << "3. Activate all devices" << std::endl;
+    std::cout << "4. Deactivate all devices" << std::endl;
+    std::cout << "5. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -83,6 +105,14 @@ void DeviceManager::ChoiceHandling(int choice)
     }
 
     case 3:
+        ActivateAllDevices();
+        break;
+
+    case 4:
+        DeactivateAllDevices();
+        break;
+
+    case 5:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
