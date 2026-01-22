@@ -6,16 +6,23 @@ SecurityCamera::SecurityCamera(std::string cam_quality, std::string pwr, unsigne
 {
 }
 
+void SecurityCamera::interaction_event()
+{
+    std::cout << "Camera viewing:" << device_name << std::endl;
+    std::cout << "Camera Quality:" << camera_quality << std::endl;
+    std::cout << "Power:" << power << std::endl;
+}
+
 void SecurityCamera::ViewInfo()
 {
 
     Device::ViewInfo(); // shows other details of a the device
 
-    // if (!status)
-    // {
-    //     std::cout << "Current device is inactive!" << std::endl;
-    //     return;
-    // }
+    if (!status)
+    {
+        std::cout << "Current device is inactive!" << std::endl;
+        return;
+    }
 
     std::cout << "Camera viewing:" << device_name << std::endl;
     std::cout << "Camera Quality:" << camera_quality << std::endl;
