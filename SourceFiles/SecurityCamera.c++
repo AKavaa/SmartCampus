@@ -8,9 +8,8 @@ SecurityCamera::SecurityCamera(std::string cam_quality, std::string pwr, unsigne
 
 void SecurityCamera::interaction_event()
 {
-    std::cout << "Camera viewing:" << device_name << std::endl;
-    std::cout << "Camera Quality:" << camera_quality << std::endl;
-    std::cout << "Power:" << power << std::endl;
+
+    std::cout << " Now viewing camera" << std::endl;
 }
 
 void SecurityCamera::ViewInfo()

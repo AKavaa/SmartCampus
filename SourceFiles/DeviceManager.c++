@@ -27,6 +27,13 @@ void DeviceManager::RunProgram()
     // checks users input and based on what the user presses the specific output is shown
 }
 
+void InteractDeviceMenu()
+{
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+}
 void DeviceManager::ActivateAllDevices()
 {
 
@@ -79,6 +86,7 @@ void DeviceManager::ChoiceHandling(int choice)
     case 2:
     {
         unsigned int target_device;
+        InteractDeviceMenu();
         std::cout << "Enter the number ID (1-4) of the device you want to interact with: ";
         std::cin >> target_device;
 
@@ -91,7 +99,7 @@ void DeviceManager::ChoiceHandling(int choice)
             // Getter check if the device is the correct one
             if (devices[i]->Get_id() == target_device)
             {
-                std::cout << "\n Interacting with device ID: " << target_device << std::endl;
+                std::cout << "Interacting with device ID: " << target_device << std::endl;
                 devices[i]->interaction_event(); // the device will trigger the inputed interaction event
 
                 device_found = true;
