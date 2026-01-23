@@ -23,10 +23,72 @@ void DeviceManager::RunProgram()
 
     int choice = 0;
 
-    ShowMenu();
-    std::cin >> choice;
-    ChoiceHandling(choice);
-    // checks users input and based on what the user presses the specific output is shown
+    // While loops helps the program to live inside the memory, It ensures after every correct input
+    // the program will return to a fresh start instead of exiting
+    while (true)
+    {
+        ShowMenu();
+
+        // reads the input
+        if (!(std::cin >> choice))
+        {
+            std::cout << "Invalid input. Please enter a number." << std::endl;
+
+            std::cin.clear();
+            // cleans the input buffer so it is preventing the user skipping the next inputs (id, name, brand)
+            std::cin.ignore(1000, '\n');
+            continue;
+        }
+
+        std::cin.ignore(1000, '\n');
+
+        ChoiceHandling(choice);
+    }
+}
+
+void DeviceManager::AddDevice()
+{
+    int device_type;
+    std::cout << "Which Device type you want to add?" << std::endl;
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
+    std::cin >> device_type;
+
+    std::string device_name, device_brand;
+    int id;
+
+    std::cout << "Enter Device ID: ";
+    std::cin >> id;
+    std::cout << "Enter Device Name: ";
+    std::cin >> device_name;
+    std::cout << "Enter Device Brand: ";
+    std::cin >> device_brand;
+
+    switch (device_type)
+    {
+    case 1:
+        devices.push_back(std::make_unique<SecurityCamera>("720p", "100 wat", id, device_name, device_brand));
+        break;
+
+    case 2:
+        devices.push_back(std::make_unique<AirConditioning>(22, id, device_name, device_brand));
+        break;
+    case 3:
+        devices.push_back(std::make_unique<Projector>("wireless", 30, id, device_name, device_brand));
+        break;
+    case 4:
+        devices.push_back(std::make_unique<RoomLighting>(40, id, device_name, device_brand));
+        break;
+    case 5:
+        devices.push_back(std::make_unique<DoorLock>(true, "user", id, device_name, device_brand));
+        break;
+    default:
+        break;
+    }
+    std::cout << "Device added succesfully!" << std::endl;
 }
 
 void InteractDeviceMenu()
@@ -67,7 +129,8 @@ void DeviceManager::ShowMenu()
     std::cout << "2. Interact with a device" << std::endl;
     std::cout << "3. Activate all devices" << std::endl;
     std::cout << "4. Deactivate all devices" << std::endl;
-    std::cout << "5. Exit" << std::endl;
+    std::cout << "5. Add device" << std::endl;
+    std::cout << "6. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -127,6 +190,10 @@ void DeviceManager::ChoiceHandling(int choice)
         break;
 
     case 5:
+        AddDevice();
+        break;
+
+    case 6:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
