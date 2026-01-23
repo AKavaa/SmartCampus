@@ -94,13 +94,28 @@ void DeviceManager::AddDevice()
 void DeviceManager::DeleteDevice()
 
 {
+    int target_id;
 
-    std::cout << "Select the device you want to delete :" << std::endl;
     std::cout << "[ID:1 - SecurityCamera]" << std::endl;
     std::cout << "[ID:2 - AirConditioning]" << std::endl;
     std::cout << "[ID:3 - Projector]" << std::endl;
     std::cout << "[ID:4 - RoomLighting]" << std::endl;
     std::cout << "[ID:5 - DoorLock]" << std::endl;
+    std::cout << "Select the device you want to delete :";
+    std::cin >> target_id;
+
+    // looping through the vector
+    // auto lets the compilet to decide the device (iterator) type
+    // the loop basically points to the first device inside the vector and stops after passing the last device
+    for (auto device = devices.begin(); device != devices.end(); device++)
+    {
+        // dereferencing the device iterator to get the unique pointer and after accessing the device object
+        if ((*device)->Get_id() == target_id)
+        {
+            devices.erase(device); // deletes the specific device which has the id that the user inputted, frees memory
+            std::cout << "Device with ID: " << target_id << " was deleted succesfully!" << std::endl;
+        }
+    }
 }
 
 void InteractDeviceMenu()
@@ -142,7 +157,8 @@ void DeviceManager::ShowMenu()
     std::cout << "3. Activate all devices" << std::endl;
     std::cout << "4. Deactivate all devices" << std::endl;
     std::cout << "5. Add device" << std::endl;
-    std::cout << "6. Exit" << std::endl;
+    std::cout << "6. Delete device" << std::endl;
+    std::cout << "7. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -206,6 +222,10 @@ void DeviceManager::ChoiceHandling(int choice)
         break;
 
     case 6:
+        DeleteDevice();
+        break;
+
+    case 7:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
