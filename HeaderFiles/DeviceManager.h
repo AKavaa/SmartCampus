@@ -22,6 +22,7 @@ public:
     void ActivateAllDevices();
     void DeactivateAllDevices();
     void AddDevice();
+    void DeleteDevice();
 
     // will be showing the menu for the Smart Campus
     void ShowMenu();

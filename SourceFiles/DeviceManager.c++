@@ -91,6 +91,18 @@ void DeviceManager::AddDevice()
     std::cout << "Device added succesfully!" << std::endl;
 }
 
+void DeviceManager::DeleteDevice()
+
+{
+
+    std::cout << "Select the device you want to delete :" << std::endl;
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
+}
+
 void InteractDeviceMenu()
 {
     std::cout << "[ID:1 - SecurityCamera]" << std::endl;
