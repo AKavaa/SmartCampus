@@ -33,7 +33,7 @@ void DeviceManager::RunProgram()
         if (!(std::cin >> choice))
         {
             std::cout << "Invalid input. Please enter a number." << std::endl;
-
+            // Resets the input system if the user mistypes (example. letters instead of numbers)
             std::cin.clear();
             // cleans the input buffer so it is preventing the user skipping the next inputs (id, name, brand)
             std::cin.ignore(1000, '\n');
