@@ -38,3 +38,33 @@ void DoorLock::ViewInfo()
     std::cout << "Door Locked: " << (locked ? "Yes" : "No") << std::endl;
     std::cout << "Last opened by: " << last_opened_by << std::endl;
 }
+
+void DoorLock::EditDevice()
+{
+
+    int choice;
+
+    std::cout << "Editing Door Lock" << std::endl;
+    std::cout << "1. Change the Lock State" << std::endl;
+    std::cout << "2. Change last opened by user" << std::endl;
+    std::cout << "Choose an option: ";
+    std::cin >> choice;
+
+    switch (choice)
+    {
+    case 1:
+        locked = !locked;
+        std::cout << "Door is now: " << (locked ? "Locked" : "Unlocked") << std::endl;
+        break;
+
+    case 2:
+        std::cout << "Enter new username: ";
+        std::cin >> last_opened_by;
+        std::cout << "Updated succesfully!" << std::endl;
+        break;
+
+    default:
+        std::cout << "Invalid choice, please try again!" << std::endl;
+        break;
+    }
+}

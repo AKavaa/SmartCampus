@@ -27,3 +27,14 @@ void SecurityCamera::ViewInfo()
     std::cout << "Camera Quality:" << camera_quality << std::endl;
     std::cout << "Power:" << power << std::endl;
 }
+
+void SecurityCamera::EditDevice()
+{
+
+    std::cout << "Editing Security Camera" << std::endl;
+    std::cout << "Input new Camera resolution : " << std::endl;
+    std::cin >> camera_quality;
+
+    std::cout << "Enter the new power supply: " << std::endl;
+    std::cin >> power;
+}

@@ -2,11 +2,9 @@
 #include "../HeaderFiles/Projector.H"
 #include "../HeaderFiles/Device.H"
 #include "../HeaderFiles/SecurityCamera.H"
-#include "../HeaderFiles/Projector.H"
 #include "../HeaderFiles/AirConditioning.H"
 #include "../HeaderFiles/RoomLighting.H"
 #include "../HeaderFiles/DoorLock.H"
-#include "../HeaderFiles/DeviceManager.h"
 
 #include <iostream>
 
@@ -118,6 +116,26 @@ void DeviceManager::DeleteDevice()
     }
 }
 
+void DeviceManager::EditDevice()
+{
+    int target_id;
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
+    std::cout << "Enter the Device ID you want to edit: ";
+    std::cin >> target_id;
+    for (auto &dev : devices)
+    {
+        if (dev->Get_id() == target_id)
+        {
+            dev->EditDevice();
+            std::cout << "Devices edited succesfully!" << std::endl;
+        }
+    }
+}
+
 void InteractDeviceMenu()
 {
     std::cout << "[ID:1 - SecurityCamera]" << std::endl;
@@ -158,7 +176,8 @@ void DeviceManager::ShowMenu()
     std::cout << "4. Deactivate all devices" << std::endl;
     std::cout << "5. Add device" << std::endl;
     std::cout << "6. Delete device" << std::endl;
-    std::cout << "7. Exit" << std::endl;
+    std::cout << "7. Edit device" << std::endl;
+    std::cout << "8. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -226,6 +245,10 @@ void DeviceManager::ChoiceHandling(int choice)
         break;
 
     case 7:
+        EditDevice();
+        break;
+
+    case 8:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;

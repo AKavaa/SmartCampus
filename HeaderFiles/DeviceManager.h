@@ -23,7 +23,7 @@ public:
     void DeactivateAllDevices();
     void AddDevice();
     void DeleteDevice();
-
+    void EditDevice();
     // will be showing the menu for the Smart Campus
     void ShowMenu();
     void ChoiceHandling(int choice);

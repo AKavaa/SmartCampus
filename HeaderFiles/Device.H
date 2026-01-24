@@ -54,6 +54,9 @@ public:
 
     // this method will be called and override each class with the appropriate output
     virtual void interaction_event() = 0;
+
+    // this method will be called and override each class with the appropriate edits
+    virtual void EditDevice() = 0;
 };
 
 #endif

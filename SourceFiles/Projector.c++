@@ -42,3 +42,13 @@ void Projector::ViewInfo()
     std::cout << "Brightness input :" << brightness_level << "%" << "\n"
               << std::endl;
 }
+
+void Projector::EditDevice()
+{
+    std::cout << "Editing Projector" << std::endl;
+    std::cout << "Enter new input source type: ";
+    std::cin >> input_source;
+
+    std::cout << "Enter new brightness level(0-100%): ";
+    std::cin >> brightness_level;
+}

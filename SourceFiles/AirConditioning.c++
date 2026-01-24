@@ -24,3 +24,12 @@ void AirConditioning::ViewInfo()
     std::cout << "Current Temperature: " << target_temperature << "°C \n"
               << std::endl;
 }
+
+void AirConditioning::EditDevice()
+{
+
+    std::cout << "Editing Air Condition" << std::endl;
+    std::cout << "Set a new temperature: " << std::endl;
+    std::cin >> target_temperature;
+    std::cout << "New temperature: " << target_temperature << "°C" << std::endl;
+}

@@ -33,3 +33,10 @@ void RoomLighting::ViewInfo()
     Device::ViewInfo();
     std::cout << "Current brightness level: " << brightness_level << "%" << std::endl;
 }
+
+void RoomLighting::EditDevice()
+{
+    std::cout << "Editing Room Lighting" << std::endl;
+    std::cout << "Enter new brightness level(0-100%): ";
+    std::cin >> brightness_level;
+}

@@ -18,5 +18,7 @@ public:
     void interaction_event() override;
 
     void ViewInfo() override;
+
+    void EditDevice() override;
 };
 #endif
