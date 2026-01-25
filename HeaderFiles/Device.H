@@ -12,10 +12,11 @@ protected:
     std::string device_name;
     std::string manufacturer;
     bool status;
+    bool isConnected;
 
 public:
     // constructor to initialize parameters for Device
-    Device(unsigned int id, std::string name, std::string manufacturer) : unique_number_id(id), device_name(name), manufacturer(manufacturer), status(false) {}
+    Device(unsigned int id, std::string name, std::string manufacturer) : unique_number_id(id), device_name(name), manufacturer(manufacturer), status(false), isConnected(true) {}
 
     // destructor is initialised for safe polymorphic deletion and ensures correct clean up=
     virtual ~Device() {}
@@ -50,6 +51,17 @@ public:
     {
         status = false;
         std::cout << device_name << " is deactivated.. ";
+    }
+
+    bool CheckConnection()
+    {
+        return isConnected; // CheckConnection method
+    }
+
+    //  method to check the status
+    void SetConnection(bool status)
+    {
+        isConnected = status;
     }
 
     // this method will be called and override each class with the appropriate output

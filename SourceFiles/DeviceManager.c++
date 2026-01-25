@@ -44,6 +44,43 @@ void DeviceManager::RunProgram()
     }
 }
 
+void DeviceManager::CheckConnection()
+{
+    int device_id;
+    std::cout << "Enter a Device ID to change the connection status: ";
+    std::cin >> device_id;
+
+    for (auto &dev : devices)
+    {
+        if (dev->Get_id() == device_id)
+        {
+            bool current_state = dev->CheckConnection();
+            dev->SetConnection(!current_state);
+            std::cout << "Device connection is now: " << (!current_state ? "Online" : "Offline");
+        }
+    }
+}
+
+void DeviceManager::CheckConnectionList()
+{
+    std::cout << "----- Connected Devices -----" << std::endl;
+    for (auto &dev : devices)
+    {
+        if (dev->CheckConnection())
+        {
+            std::cout << "[ONLINE] ID: " << dev->Get_id() << std::endl;
+        }
+    }
+    std::cout << "----- Disconnected Devices -----" << std::endl;
+    for (auto &dev : devices)
+    {
+        if (!dev->CheckConnection())
+        {
+            std::cout << "[OFFLINE] ID: " << dev->Get_id() << std::endl;
+        }
+    }
+}
+
 void DeviceManager::AddDevice()
 {
     int device_type;
@@ -177,7 +214,9 @@ void DeviceManager::ShowMenu()
     std::cout << "5. Add device" << std::endl;
     std::cout << "6. Delete device" << std::endl;
     std::cout << "7. Edit device" << std::endl;
-    std::cout << "8. Exit" << std::endl;
+    std::cout << "8. Check Connection Status of devices (Online/Offline)" << std::endl;
+    std::cout << "9. Trigger device connection" << std::endl;
+    std::cout << "10. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -247,8 +286,14 @@ void DeviceManager::ChoiceHandling(int choice)
     case 7:
         EditDevice();
         break;
-
     case 8:
+        CheckConnectionList();
+        break;
+    case 9:
+        CheckConnection();
+        break;
+
+    case 10:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
