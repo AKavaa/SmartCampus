@@ -61,6 +61,8 @@ void DeviceManager::CheckConnection()
     }
 }
 
+// loops through the vector, and displays the devices
+// dev->Get_id(), dev->Get_name(), displays the getter methods so the user understand with what devices it interacts
 void DeviceManager::CheckConnectionList()
 {
     std::cout << "----- Connected Devices -----" << std::endl;
@@ -68,7 +70,7 @@ void DeviceManager::CheckConnectionList()
     {
         if (dev->CheckConnection())
         {
-            std::cout << "[ONLINE] ID: " << dev->Get_id() << std::endl;
+            std::cout << "[ONLINE] ID: " << dev->Get_id() << " - " << dev->Get_name() << std::endl;
         }
     }
     std::cout << "----- Disconnected Devices -----" << std::endl;
@@ -76,7 +78,11 @@ void DeviceManager::CheckConnectionList()
     {
         if (!dev->CheckConnection())
         {
-            std::cout << "[OFFLINE] ID: " << dev->Get_id() << std::endl;
+            std::cout << "[OFFLINE] ID: " << dev->Get_id() << " - " << dev->Get_name() << std::endl;
+        }
+        if (dev->CheckConnection() == false)
+        {
+            std::cout << "The device ID: " << dev->Get_id() << " - " << dev->Get_name() << " " << " is Disconnected" << std::endl;
         }
     }
 }

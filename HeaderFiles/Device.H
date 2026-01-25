@@ -28,6 +28,13 @@ public:
         return unique_number_id;
     }
 
+    // Getter method so user can interact with the name of the device
+    // const so the compiler wont change any data
+    std::string Get_name() const
+    {
+        return device_name;
+    }
+
     // view info method, check each Device's information
     // approach using polymorphism
     virtual void ViewInfo()
