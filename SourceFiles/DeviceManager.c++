@@ -55,11 +55,18 @@ void DeviceManager::CheckConnection()
     std::cout << "Enter a Device ID to change the connection status: ";
     std::cin >> device_id;
 
+    // loops through the vector, and displays the devices
+    // dev->Get_id(), dev->Get_name(), displays the getter methods so the user understand with what devices it interacts
     for (auto &dev : devices)
     {
+        // checks if device id are the same
         if (dev->Get_id() == device_id)
         {
+            // saves the current status of the device (true/false) inside the variable current_state
+            // if the device is online (true) it makes it offline (false).
+            // instead of using a if-else statement this approach is much faster
             bool current_state = dev->CheckConnection();
+            // status
             dev->SetConnection(!current_state);
             std::cout << dev->Get_name() << " connection is now: " << (!current_state ? "Online" : "Offline");
         }
