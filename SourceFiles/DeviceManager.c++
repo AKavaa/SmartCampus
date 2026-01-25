@@ -47,6 +47,11 @@ void DeviceManager::RunProgram()
 void DeviceManager::CheckConnection()
 {
     int device_id;
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter a Device ID to change the connection status: ";
     std::cin >> device_id;
 
@@ -56,7 +61,7 @@ void DeviceManager::CheckConnection()
         {
             bool current_state = dev->CheckConnection();
             dev->SetConnection(!current_state);
-            std::cout << "Device connection is now: " << (!current_state ? "Online" : "Offline");
+            std::cout << dev->Get_name() << " connection is now: " << (!current_state ? "Online" : "Offline");
         }
     }
 }
