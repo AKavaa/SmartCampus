@@ -38,8 +38,8 @@ void Projector::ViewInfo()
 
     // specific information about the device
     std::cout
-        << "Source input :" << input_source << std::endl;
-    std::cout << "Brightness input :" << brightness_level << "%" << "\n"
+        << "Source input: " << input_source << std::endl;
+    std::cout << "Brightness input: " << brightness_level << "%" << "\n"
               << std::endl;
 }
 
