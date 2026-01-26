@@ -2,10 +2,23 @@
 #define DEVICEMANAGER_H
 
 #include "Projector.H"
-
+#include <string>
 #include <memory>
 #include <vector>
 #include "Device.H"
+
+// Room class that will store multiple devices
+class Room
+{
+
+public:
+    std::string room_name; // name of the room
+    // Unique_ptr is used to automatically destroy the devices when the room is destroyed
+    // and making sure that the devices are managed by the specific room
+    std::vector<std::unique_ptr<Room>> devices;
+
+    Room(std::string name) : room_name(room_name) {}
+};
 
 class DeviceManager
 {
