@@ -49,10 +49,15 @@ void DeviceManager::DeviceSearch()
     int deviceSearch_id;
     std::cout << "Enter the ID of the device you want to search:";
     std::cin >> deviceSearch_id;
+
+    bool device_found = false;
     for (auto &dev : devices)
     {
         if (dev->Get_id() == deviceSearch_id)
         {
+
+            device_found = true; // device was found
+
             int search_choice;
             std::cout << "Device found: " << dev->Get_name() << std::endl;
             std::cout << "1. Activate Device" << std::endl;
@@ -87,7 +92,10 @@ void DeviceManager::DeviceSearch()
             }
         }
     }
-    std::cout << "Error! Device cannot be found!" << std::endl;
+    if (!device_found)
+    {
+        std::cout << "Error! Device cannot be found!" << std::endl;
+    }
 }
 
 void DeviceManager::CheckConnection()
