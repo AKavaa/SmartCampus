@@ -148,12 +148,13 @@ void DeviceManager::CheckConnectionList()
 void DeviceManager::AddDevice()
 {
     int device_type;
-    std::cout << "Which Device type you want to add?" << std::endl;
+
     std::cout << "[ID:1 - SecurityCamera]" << std::endl;
     std::cout << "[ID:2 - AirConditioning]" << std::endl;
     std::cout << "[ID:3 - Projector]" << std::endl;
     std::cout << "[ID:4 - RoomLighting]" << std::endl;
     std::cout << "[ID:5 - DoorLock]" << std::endl;
+    std::cout << "Insert the ID of the device you want to add: ";
     std::cin >> device_type;
 
     std::string device_name, device_brand;
@@ -161,6 +162,16 @@ void DeviceManager::AddDevice()
 
     std::cout << "Enter Device ID: ";
     std::cin >> id;
+
+    for (auto &dev : devices)
+    {
+        if (dev->Get_id() == id)
+        {
+            std::cout << "Device with the ID: " << id << " already exists, add another id" << std::endl;
+            return;
+        }
+    }
+
     std::cout << "Enter Device Name: ";
     std::cin >> device_name;
     std::cout << "Enter Device Brand: ";
@@ -185,6 +196,7 @@ void DeviceManager::AddDevice()
         devices.push_back(std::make_unique<DoorLock>(true, "user", id, device_name, device_brand));
         break;
     default:
+        std::cout << "Incorrect selection of a device" << std::endl;
         break;
     }
     std::cout << "Device added succesfully!" << std::endl;
