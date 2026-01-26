@@ -206,7 +206,7 @@ void DeviceManager::ActivateAllDevices()
     for (auto &dev : devices)
     {
         dev->Activate();
-        std::cout << "All devices are activated!" << std::endl;
+        std::cout << "\n";
     }
 }
 
@@ -217,7 +217,7 @@ void DeviceManager::DeactivateAllDevices()
     for (auto &dev : devices)
     {
         dev->Deactivate();
-        std::cout << "All devices are deactivated!" << std::endl;
+        std::cout << "\n";
     }
 }
 
