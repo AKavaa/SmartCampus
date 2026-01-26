@@ -44,6 +44,52 @@ void DeviceManager::RunProgram()
     }
 }
 
+void DeviceManager::DeviceSearch()
+{
+    int deviceSearch_id;
+    std::cout << "Enter the ID of the device you want to search:";
+    std::cin >> deviceSearch_id;
+    for (auto &dev : devices)
+    {
+        if (dev->Get_id() == deviceSearch_id)
+        {
+            int search_choice;
+            std::cout << "Device found: " << dev->Get_name() << std::endl;
+            std::cout << "1. Activate Device" << std::endl;
+            std::cout << "2. Deactivate Device" << std::endl;
+            std::cout << "3. Check Connection" << std::endl;
+            std::cout << "4. Interaction event of the device" << std::endl;
+            std::cout << "5. View Info of the device" << std::endl;
+            std::cout << "Enter an option: ";
+            std::cin >> search_choice;
+
+            switch (search_choice)
+            {
+            case 1:
+                dev->Activate(); // activate device
+                break;
+
+            case 2:
+                dev->Deactivate(); // Deactivate device
+                break;
+
+            case 3:
+                dev->CheckConnection(); // Check connection
+                break;
+
+            case 4:
+                dev->interaction_event(); // call the interaction event of the device
+                break;
+
+            case 5:
+                dev->ViewInfo(); // call the interaction event of the device
+                break;
+            }
+        }
+    }
+    std::cout << "Error! Device cannot be found!" << std::endl;
+}
+
 void DeviceManager::CheckConnection()
 {
     int device_id;
@@ -234,7 +280,8 @@ void DeviceManager::ShowMenu()
     std::cout << "7. Edit device" << std::endl;
     std::cout << "8. Check Connection Status of devices (Online/Offline)" << std::endl;
     std::cout << "9. Trigger device connection" << std::endl;
-    std::cout << "10. Exit" << std::endl;
+    std::cout << "10. Search device" << std::endl;
+    std::cout << "11. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -310,8 +357,11 @@ void DeviceManager::ChoiceHandling(int choice)
     case 9:
         CheckConnection();
         break;
-
     case 10:
+        DeviceSearch();
+        break;
+
+    case 11:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;

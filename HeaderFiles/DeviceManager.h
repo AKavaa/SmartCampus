@@ -26,6 +26,7 @@ public:
     void EditDevice();
     void CheckConnection();
     void CheckConnectionList();
+    void DeviceSearch();
 
     // will be showing the menu for the Smart Campus
     void ShowMenu();
