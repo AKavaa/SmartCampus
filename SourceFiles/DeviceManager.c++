@@ -88,6 +88,11 @@ void DeviceManager::CreateRoom()
 void DeviceManager::DeviceSearch()
 {
     int deviceSearch_id;
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter the ID of the device you want to search:";
     std::cin >> deviceSearch_id;
 
