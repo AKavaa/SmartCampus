@@ -79,7 +79,7 @@ void DeviceManager::CreateRoom()
 
     std::string room_name;
     std::cout << "Enter the name of the room you want to add: ";
-    std::cin >> room_name;
+    std::getline(std::cin, room_name);
 
     room.push_back(std::make_unique<Room>(room_name));
 
