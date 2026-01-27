@@ -44,6 +44,17 @@ void DeviceManager::RunProgram()
     }
 }
 
+void DeviceManager::CreateRoom()
+{
+
+    std::string room_name;
+    std::cout << "Enter the name of the room you want to add: ";
+    std::cin >> room_name;
+
+    room.push_back(std::make_unique<Room>(room_name));
+
+    std::cout << "Room" << room_name << " was added succesfully!" << std::endl;
+}
 void DeviceManager::DeviceSearch()
 {
     int deviceSearch_id;
@@ -301,7 +312,8 @@ void DeviceManager::ShowMenu()
     std::cout << "8. Check Connection Status of devices (Online/Offline)" << std::endl;
     std::cout << "9. Trigger device connection" << std::endl;
     std::cout << "10. Search device" << std::endl;
-    std::cout << "11. Exit" << std::endl;
+    std::cout << "11. Create room" << std::endl;
+    std::cout << "12. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -380,8 +392,11 @@ void DeviceManager::ChoiceHandling(int choice)
     case 10:
         DeviceSearch();
         break;
-
     case 11:
+        CreateRoom();
+        break;
+
+    case 12:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
