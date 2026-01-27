@@ -45,6 +45,7 @@ public:
     void CheckConnectionList();
     void DeviceSearch();
     void CreateRoom();
+    void ViewAllRooms();
 
     // will be showing the menu for the Smart Campus
     void ShowMenu();

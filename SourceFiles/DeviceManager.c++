@@ -44,6 +44,36 @@ void DeviceManager::RunProgram()
     }
 }
 
+void DeviceManager::ViewAllRooms()
+{
+    if (room.empty())
+    {
+        std::cout << "There are no devices inside the rooms yet.." << std::endl;
+        return;
+    }
+
+    std::cout << "ROOM VIEW" << std::endl;
+
+    // loop through each room
+    for (auto &room : room)
+    {
+        std::cout << "Room: " << room->room_name << std::endl;
+        std::cout << "-----------------------------------------" << std::endl;
+
+        if (room->room_devices.empty())
+        {
+            std::cout << "Room currenly empty!" << std::endl;
+        }
+        else
+        {
+            for (auto &device : room->room_devices)
+            {
+                device->ViewInfo();
+            }
+        }
+    }
+}
+
 void DeviceManager::CreateRoom()
 {
 
@@ -53,7 +83,7 @@ void DeviceManager::CreateRoom()
 
     room.push_back(std::make_unique<Room>(room_name));
 
-    std::cout << "Room" << room_name << " was added succesfully!" << std::endl;
+    std::cout << "Room " << room_name << " was added succesfully!" << std::endl;
 }
 void DeviceManager::DeviceSearch()
 {
@@ -313,7 +343,8 @@ void DeviceManager::ShowMenu()
     std::cout << "9. Trigger device connection" << std::endl;
     std::cout << "10. Search device" << std::endl;
     std::cout << "11. Create room" << std::endl;
-    std::cout << "12. Exit" << std::endl;
+    std::cout << "12. View all rooms" << std::endl;
+    std::cout << "13. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -397,6 +428,10 @@ void DeviceManager::ChoiceHandling(int choice)
         break;
 
     case 12:
+        ViewAllRooms();
+        break;
+
+    case 13:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
