@@ -7,6 +7,8 @@
 #include "../HeaderFiles/DoorLock.H"
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 // Creating default objects and adding them into the device vector using a unique pointer
 // Unique pointers automatically manage memory and push_back adds the devices into the vector
@@ -41,6 +43,63 @@ void DeviceManager::RunProgram()
         std::cin.ignore(1000, '\n');
 
         ChoiceHandling(choice);
+    }
+}
+
+void DeviceManager::LoadFromFile()
+{
+    std::ifstream file("Device.txt");
+    if (!file)
+    {
+        return;
+    }
+
+    std::string line, rName, type, ID, dName, brand, extraInfo;
+
+    while (std::getline(file, line))
+    {
+        if (line.empty())
+            continue;
+        std::stringstream ss(line);
+        std::getline(ss, rName, '|');
+        std::getline(ss, type, '|');
+        std::getline(ss, ID, '|');
+        std::getline(ss, dName, '|');
+        std::getline(ss, brand, '|');
+        std::getline(ss, extraInfo);
+
+        // This is the conversion of int into the string so there is no logical errors
+        int dev_id = std::stoi(ID);
+        Room *target_room = nullptr;
+
+        // Create a Room or finding a room
+
+        // searching existing room
+        for (auto &r : room)
+        {
+            if (r->room_name == rName)
+            {
+                target_room = r.get();
+                break;
+            }
+        }
+        // create a room if it doesnt exists
+        if (!target_room)
+        {
+            room.push_back(std::make_unique<Room>(rName));
+            target_room = room.back().get(); // if room is not found a new one is created
+        }
+        // add specific device into room
+        if (type == "SecurityCamera")
+            target_room->room_devices.push_back(std::make_unique<SecurityCamera>(extraInfo, "300W", dev_id, dName, brand));
+        else if (type == "AirConditioning")
+            target_room->room_devices.push_back(std::make_unique<AirConditioning>(std::stoi(extraInfo), dev_id, dName, brand));
+        else if (type == "Projector")
+            target_room->room_devices.push_back(std::make_unique<Projector>(std::stoi(extraInfo), 50, dev_id, dName, brand));
+        else if (type == "RoomLighting")
+            target_room->room_devices.push_back(std::make_unique<RoomLighting>(std::stoi(extraInfo), dev_id, dName, brand));
+        else if (type == "DoorLock")
+            target_room->room_devices.push_back(std::make_unique<DoorLock>(true, extraInfo, dev_id, dName, brand));
     }
 }
 

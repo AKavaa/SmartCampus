@@ -1,0 +1,3 @@
+LivingRoom|SecurityCamera|101|MainCam|Logitech|1080p
+LivingRoom|AirConditioning|102|MainAC|Samsung|22
+Kitchen|RoomLighting|201|CeilingLight|Philips|80
