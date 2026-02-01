@@ -21,6 +21,8 @@ To get the extra points for design, I implemented these four patterns:
 
 ## How to Run
 
-g++ -std=c++17 -o smart_campus main.c++ SourceFiles/*.c++ (1st command)
+(1st command)
+g++ -std=c++17 -o smart_campus main.c++ SourceFiles/*.c++ 
 
-./smart_campus (2nd command)
+(2nd command)
+./smart_campus 
