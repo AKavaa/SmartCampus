@@ -15,6 +15,8 @@
 void DeviceManager::RunProgram()
 {
 
+    LoadFromFile(); // Load the devices from the file
+
     devices.push_back(std::make_unique<SecurityCamera>("FULL HD", "200 WAT", 1, "Security-Camera", "LOGITECH"));
     devices.push_back(std::make_unique<AirConditioning>(20, 2, "Air-Conditioning", "AUX"));
     devices.push_back(std::make_unique<Projector>("HDMI", 25, 3, "Projector", "SONY"));
@@ -46,9 +48,13 @@ void DeviceManager::RunProgram()
     }
 }
 
+// DESIGN PATTERN: factory method
+//  The system reads and extract information form the file
+//  and this function is acting as a factory, deciding which device will be
+//  initialiased based on the string read from the file
 void DeviceManager::LoadFromFile()
 {
-    std::ifstream file("Device.txt");
+    std::ifstream file("Devices.txt");
     if (!file)
     {
         return;
@@ -95,7 +101,7 @@ void DeviceManager::LoadFromFile()
         else if (type == "AirConditioning")
             target_room->room_devices.push_back(std::make_unique<AirConditioning>(std::stoi(extraInfo), dev_id, dName, brand));
         else if (type == "Projector")
-            target_room->room_devices.push_back(std::make_unique<Projector>(std::stoi(extraInfo), 50, dev_id, dName, brand));
+            target_room->room_devices.push_back(std::make_unique<Projector>(extraInfo, 50, dev_id, dName, brand));
         else if (type == "RoomLighting")
             target_room->room_devices.push_back(std::make_unique<RoomLighting>(std::stoi(extraInfo), dev_id, dName, brand));
         else if (type == "DoorLock")
@@ -144,6 +150,10 @@ void DeviceManager::CreateRoom()
 
     std::cout << "Room " << room_name << " was added succesfully!" << std::endl;
 }
+
+// DESIGN PATTERN: Hybrid search
+//  this function is treating the Global/Default devices and the room devices
+//  as unified hierarchy, which it is looping/searching through the devices to find the target ID
 void DeviceManager::DeviceSearch()
 {
     int deviceSearch_id;
@@ -155,53 +165,81 @@ void DeviceManager::DeviceSearch()
     std::cout << "Enter the ID of the device you want to search:";
     std::cin >> deviceSearch_id;
 
-    bool device_found = false;
+    Device *target_device = nullptr; // capture a device if found
+
+    // bool device_found = false;
+
+    // checks the default devices
     for (auto &dev : devices)
     {
+
         if (dev->Get_id() == deviceSearch_id)
         {
-
-            device_found = true; // device was found
-
-            int search_choice;
-            std::cout << "Device found: " << dev->Get_name() << std::endl;
-            std::cout << "1. Activate Device" << std::endl;
-            std::cout << "2. Deactivate Device" << std::endl;
-            std::cout << "3. Check Connection" << std::endl;
-            std::cout << "4. Interaction event of the device" << std::endl;
-            std::cout << "5. View Info of the device" << std::endl;
-            std::cout << "Enter an option: ";
-            std::cin >> search_choice;
-
-            switch (search_choice)
-            {
-            case 1:
-                dev->Activate(); // activate device
-                break;
-
-            case 2:
-                dev->Deactivate(); // Deactivate device
-                break;
-
-            case 3:
-                dev->CheckConnection(); // Check connection
-                break;
-
-            case 4:
-                dev->interaction_event(); // call the interaction event of the device
-                break;
-
-            case 5:
-                dev->ViewInfo(); // call the interaction event of the device
-                break;
-            }
+            target_device = dev.get(); // points to the global/default device
+            break;
         }
     }
-    if (!device_found)
+
+    if (target_device == nullptr)
     {
-        std::cout << "Error! Device cannot be found!" << std::endl;
+        for (auto &r : room)
+        {
+            for (auto &d : r->room_devices)
+            {
+                if (d->Get_id() == deviceSearch_id)
+                {
+                    target_device = d.get();
+                    std::cout << "Device found in: " << r->room_name << std::endl;
+                }
+            }
+            if (target_device != nullptr) // device found the search is stopped
+                break;
+        }
+    }
+
+    if (target_device != nullptr)
+    {
+
+        int search_choice;
+        std::cout << "Device found: " << target_device->Get_name() << std::endl;
+        std::cout << "1. Activate Device" << std::endl;
+        std::cout << "2. Deactivate Device" << std::endl;
+        std::cout << "3. Check Connection" << std::endl;
+        std::cout << "4. Interaction event of the device" << std::endl;
+        std::cout << "5. View Info of the device" << std::endl;
+        std::cout << "Enter an option: ";
+        std::cin >> search_choice;
+
+        switch (search_choice)
+        {
+        case 1:
+            target_device->Activate(); // activate device
+            break;
+
+        case 2:
+            target_device->Deactivate(); // Deactivate device
+            break;
+
+        case 3:
+            target_device->CheckConnection(); // Check connection
+            break;
+
+        case 4:
+            target_device->interaction_event(); // call the interaction event of the device
+            break;
+
+        case 5:
+            target_device->ViewInfo(); // call the interaction event of the device
+            break;
+        }
+    }
+    else
+    {
+        std::cout << "Error! Device ID" << deviceSearch_id << " cannot be found" << std::endl;
     }
 }
+
+// device_found = true; // device was found
 
 void DeviceManager::CheckConnection()
 {
@@ -379,6 +417,15 @@ void DeviceManager::ActivateAllDevices()
         dev->Activate();
         std::cout << "\n";
     }
+
+    for (auto &r : room)
+    {
+        for (auto &d : r->room_devices)
+        {
+            d->Activate();
+        }
+        std::cout << "All devices across the campus are activated!" << std::endl;
+    }
 }
 
 void DeviceManager::DeactivateAllDevices()
@@ -389,6 +436,14 @@ void DeviceManager::DeactivateAllDevices()
     {
         dev->Deactivate();
         std::cout << "\n";
+    }
+    for (auto &r : room)
+    {
+        for (auto &d : r->room_devices)
+        {
+            d->Deactivate();
+        }
+        std::cout << "All devices across the campus are deactivated!" << std::endl;
     }
 }
 
@@ -417,13 +472,24 @@ void DeviceManager::ChoiceHandling(int choice)
     switch (choice)
     {
     case 1:
-        std::cout << " \n====== Device Information ====== \n"
+        std::cout << " \n====== Default Device Information ====== \n"
                   << std::endl;
         // looping to show all the devices
-        for (int i = 0; i < devices.size(); i++)
+        for (auto &d : devices)
         {
-            devices[i]->ViewInfo();
+            d->ViewInfo();
             std::cout << "----------------------------" << std::endl;
+        }
+
+        std::cout << " \n====== Devices Found In Rooms ====== \n"
+                  << std::endl;
+        if (room.empty())
+        {
+            std::cout << "No rooms were loaded from the file" << std::endl;
+        }
+        else
+        {
+            ViewAllRooms();
         }
 
         break;
