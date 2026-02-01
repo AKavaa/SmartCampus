@@ -21,8 +21,10 @@ To get the extra points for design, I implemented these four patterns:
 
 ## How to Run
 
-(1st command)
-g++ -std=c++17 -o smart_campus main.c++ SourceFiles/*.c++ 
+Open your terminal.
 
-(2nd command)
-./smart_campus 
+Navigate to the project folder: cd Path/To/SmartCampus
+
+Compile: g++ -std=c++17 -o smart_campus main.c++ SourceFiles/*.c++
+
+Run: ./smart_campus
