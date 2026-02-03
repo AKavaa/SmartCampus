@@ -467,6 +467,7 @@ void DeviceManager::ShowMenu()
     std::cout << "Choose an option:";
 }
 
+// Here are where all the choices are being made via a switch statement
 void DeviceManager::ChoiceHandling(int choice)
 {
     switch (choice)
