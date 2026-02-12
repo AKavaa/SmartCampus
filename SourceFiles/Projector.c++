@@ -14,9 +14,30 @@ void Projector::interaction_event()
 
     if (input_choice == 1)
     {
-        std::cout << "Enter Input Source (HDMI, VGA, wireless):";
-        std::cin >> input_source;
-        std::cout << "Input Source changes to :" << input_source << std::endl;
+        int choice;
+
+        std::cout << "1. HDMI" << std::endl;
+        std::cout << "2. VGA" << std::endl;
+        std::cout << "3. Wireless" << std::endl;
+        std::cout << "Enter Input Source:";
+        std::cin >> choice;
+        // using switch case for the user to be able to choose only the 3 given options (HDMI, VGA, WIRELESS), if user chooses another option, it wont be validated
+        switch (choice)
+        {
+        case 1:
+            input_source = "HDMI";
+            break;
+        case 2:
+            input_source = "VGA";
+            break;
+        case 3:
+            input_source = "Wireless";
+            break;
+
+        default:
+            std::cout << "Wrong input try again!" << std::endl;
+            break;
+        }
     }
     else if (input_choice == 2)
     {
