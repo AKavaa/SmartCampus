@@ -289,10 +289,10 @@ void DeviceManager::CheckConnectionList()
         {
             std::cout << "[OFFLINE] ID: " << dev->Get_id() << " - " << dev->Get_name() << std::endl;
         }
-        if (dev->CheckConnection() == false)
-        {
-            std::cout << "The device ID: " << dev->Get_id() << " - " << dev->Get_name() << " " << " is Disconnected" << std::endl;
-        }
+        // if (dev->CheckConnection() == false)
+        // {
+        //     std::cout << "The device ID: " << dev->Get_id() << " - " << dev->Get_name() << " " << " is Disconnected" << std::endl;
+        // }
     }
 }
 
