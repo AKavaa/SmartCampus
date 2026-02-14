@@ -113,7 +113,7 @@ void DeviceManager::AddRoomDevice()
 {
 
     std::string roomName;
-    std::cout << "Type the name of the room you want to add the device (eg.SecurityRoom, Reception, MainHall):";
+    std::cout << "Type the name of the room you want to add the device (eg.SecurityRoom, Reception,):";
     std::getline(std::cin, roomName);
 
     Room *target_room = nullptr;
@@ -135,7 +135,11 @@ void DeviceManager::AddRoomDevice()
     }
     int device_type;
 
-    InteractDeviceMenu();
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Insert the ID of the device you want to add: ";
     std::cin >> device_type;
 
@@ -218,7 +222,11 @@ void DeviceManager::CreateRoom()
 void DeviceManager::DeviceSearch()
 {
     int deviceSearch_id;
-    InteractDeviceMenu();
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter the ID of the device you want to search:";
     std::cin >> deviceSearch_id;
 
@@ -301,7 +309,11 @@ void DeviceManager::DeviceSearch()
 void DeviceManager::CheckConnection()
 {
     int device_id;
-    InteractDeviceMenu();
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter a Device ID to change the connection status: ";
     std::cin >> device_id;
 
@@ -353,7 +365,11 @@ void DeviceManager::AddDevice()
 {
     int device_type;
 
-    InteractDeviceMenu();
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Insert the ID of the device you want to add: ";
     std::cin >> device_type;
 
@@ -407,7 +423,11 @@ void DeviceManager::DeleteDevice()
 {
     int target_id;
 
-    InteractDeviceMenu();
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Select the device you want to delete :";
     std::cin >> target_id;
 
@@ -428,7 +448,11 @@ void DeviceManager::DeleteDevice()
 void DeviceManager::EditDevice()
 {
     int target_id;
-    InteractDeviceMenu();
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter the Device ID you want to edit: ";
     std::cin >> target_id;
     for (auto &dev : devices)
@@ -441,7 +465,6 @@ void DeviceManager::EditDevice()
     }
 }
 
-// displays the menu for the 5 devices
 void InteractDeviceMenu()
 {
     std::cout << "[ID:1 - SecurityCamera]" << std::endl;
