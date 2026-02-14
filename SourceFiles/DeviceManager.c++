@@ -523,8 +523,8 @@ void DeviceManager::ActivateAllDevices()
         {
             d->Activate();
         }
-        std::cout << "All devices across the campus are activated!" << std::endl;
     }
+    std::cout << "\n\nAll devices across the campus are activated!" << std::endl;
 }
 
 void DeviceManager::DeactivateAllDevices()
@@ -542,8 +542,8 @@ void DeviceManager::DeactivateAllDevices()
         {
             d->Deactivate();
         }
-        std::cout << "All devices across the campus are deactivated!" << std::endl;
     }
+    std::cout << "\n\nAll devices across the campus are deactivated!" << std::endl;
 }
 
 void DeviceManager::ShowMenu()
