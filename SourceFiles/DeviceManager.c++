@@ -187,8 +187,7 @@ void DeviceManager::ViewAllRooms()
     // loop through each room
     for (auto &room : room)
     {
-        std::cout << "Room: " << room->room_name << std::endl;
-        std::cout << "-----------------------------------------" << std::endl;
+        std::cout << "ROOM: " << room->room_name << std::endl;
 
         if (room->room_devices.empty())
         {
@@ -199,6 +198,7 @@ void DeviceManager::ViewAllRooms()
             for (auto &device : room->room_devices)
             {
                 device->ViewInfo();
+                std::cout << "-----------------------------------------" << std::endl;
             }
         }
     }
@@ -213,7 +213,7 @@ void DeviceManager::CreateRoom()
 
     room.push_back(std::make_unique<Room>(room_name));
 
-    std::cout << "Room " << room_name << " was added succesfully!" << std::endl;
+    std::cout << "ROOM " << room_name << " was added succesfully!" << std::endl;
 }
 
 // DESIGN PATTERN: Hybrid search
