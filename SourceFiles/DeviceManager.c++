@@ -109,6 +109,71 @@ void DeviceManager::LoadFromFile()
     }
 }
 
+void DeviceManager::AddRoomDevice()
+{
+
+    std::string roomName;
+    std::cout << "Type the name of the room you want to add the device (eg.LivingRoom, Kitchen):";
+    std::getline(std::cin, roomName);
+
+    Room *target_room = nullptr;
+
+    // searching for the room, if the room exists the user proceeds with adding the device to the room
+    for (auto &r : room)
+    {
+        if (r->room_name == roomName)
+        {
+            target_room = r.get();
+            break;
+        }
+    }
+
+    // if the room doesnt exists the user needs to create it first to add the device
+    if (!target_room)
+    {
+        std::cout << "Room doesnt exist! Please create a room!" << std::endl;
+    }
+    int device_type;
+
+    std::cout << "[ID:1 - SecurityCamera]" << std::endl;
+    std::cout << "[ID:2 - AirConditioning]" << std::endl;
+    std::cout << "[ID:3 - Projector]" << std::endl;
+    std::cout << "[ID:4 - RoomLighting]" << std::endl;
+    std::cout << "[ID:5 - DoorLock]" << std::endl;
+    std::cout << "Insert the ID of the device you want to add: ";
+    std::cin >> device_type;
+
+    int id;
+    std::string device_name, device_brand;
+    std::cout << "Device ID:" << id, std::cin >> id;
+    std::cout << "Device Name:" << device_name, std::cin >> device_name;
+    std::cout << "Device Brand:" << device_brand, std::cin >> device_brand;
+
+    switch (device_type)
+    {
+    case 1:
+        target_room->room_devices.push_back(std::make_unique<SecurityCamera>("720p", "100 wat", id, device_name, device_brand));
+        break;
+
+    case 2:
+        target_room->room_devices.push_back(std::make_unique<AirConditioning>(22, id, device_name, device_brand));
+        break;
+    case 3:
+        target_room->room_devices.push_back(std::make_unique<Projector>("wireless", 30, id, device_name, device_brand));
+        break;
+    case 4:
+        target_room->room_devices.push_back(std::make_unique<RoomLighting>(40, id, device_name, device_brand));
+        break;
+    case 5:
+        target_room->room_devices.push_back(std::make_unique<DoorLock>(true, "user", id, device_name, device_brand));
+        break;
+    default:
+        std::cout << "Incorrect selection of a device" << std::endl;
+        break;
+    }
+    std::cout << "Device added succesfully!" << std::endl;
+}
+
 void DeviceManager::ViewAllRooms()
 {
     if (room.empty())
@@ -463,7 +528,8 @@ void DeviceManager::ShowMenu()
     std::cout << "10. Search device" << std::endl;
     std::cout << "11. Create room" << std::endl;
     std::cout << "12. View all rooms" << std::endl;
-    std::cout << "13. Exit" << std::endl;
+    std::cout << "13. Add device inside a room" << std::endl;
+    std::cout << "14. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -563,6 +629,10 @@ void DeviceManager::ChoiceHandling(int choice)
         break;
 
     case 13:
+        AddRoomDevice();
+        break;
+
+    case 14:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;
