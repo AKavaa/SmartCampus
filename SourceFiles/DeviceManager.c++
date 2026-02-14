@@ -237,6 +237,11 @@ void DeviceManager::DeviceSearch()
     std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter the ID of the device you want to search:";
     std::cin >> deviceSearch_id;
+    if (deviceSearch_id < 1 || deviceSearch_id > 5)
+    {
+        std::cout << "Invalid device type! Please try again!" << std::endl;
+        return;
+    }
 
     Device *target_device = nullptr; // capture a device if found
 
@@ -282,6 +287,11 @@ void DeviceManager::DeviceSearch()
         std::cout << "5. View Info of the device" << std::endl;
         std::cout << "Enter an option: ";
         std::cin >> search_choice;
+        if (search_choice < 1 || search_choice > 5)
+        {
+            std::cout << "Invalid option! Please try again!" << std::endl;
+            return;
+        }
 
         switch (search_choice)
         {
@@ -324,6 +334,11 @@ void DeviceManager::CheckConnection()
     std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter a Device ID to change the connection status: ";
     std::cin >> device_id;
+    if (device_id < 1 || device_id > 5)
+    {
+        std::cout << "Invalid option! Please try again!" << std::endl;
+        return;
+    }
 
     // loops through the vector, and displays the devices
     // dev->Get_id(), dev->Get_name(), displays the getter methods so the user understand with what devices it interacts
@@ -380,6 +395,11 @@ void DeviceManager::AddDevice()
     std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Insert the ID of the device you want to add: ";
     std::cin >> device_type;
+    if (device_type < 1 || device_type > 5)
+    {
+        std::cout << "Invalid option! Please try again!" << std::endl;
+        return;
+    }
 
     std::string device_name, device_brand;
     int id;
@@ -442,13 +462,18 @@ void DeviceManager::DeleteDevice()
     // looping through the vector
     // auto lets the compilet to decide the device (iterator) type
     // the loop basically points to the first device inside the vector and stops after passing the last device
-    for (auto device = devices.begin(); device != devices.end(); device++)
+    for (auto device = devices.begin(); device != devices.end();)
     {
         // dereferencing the device iterator to get the unique pointer and after accessing the device object
         if ((*device)->Get_id() == target_id)
         {
-            devices.erase(device); // deletes the specific device which has the id that the user inputted, frees memory
+            device = devices.erase(device); // deletes the specific device which has the id that the user inputted, frees memory
+
             std::cout << "Device with ID: " << target_id << " was deleted succesfully!" << std::endl;
+        }
+        else
+        {
+            device++; // iterator advances to the next device, not possibility of crash
         }
     }
 }
@@ -463,6 +488,7 @@ void DeviceManager::EditDevice()
     std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Enter the Device ID you want to edit: ";
     std::cin >> target_id;
+
     for (auto &dev : devices)
     {
         if (dev->Get_id() == target_id)
