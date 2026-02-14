@@ -113,7 +113,7 @@ void DeviceManager::AddRoomDevice()
 {
 
     std::string roomName;
-    std::cout << "Type the name of the room you want to add the device (eg.SecurityRoom, Reception,):";
+    std::cout << "Type the name of the room you want to add the device (eg.SecurityRoom, Reception, MainHall):";
     std::getline(std::cin, roomName);
 
     Room *target_room = nullptr;
@@ -132,6 +132,7 @@ void DeviceManager::AddRoomDevice()
     if (!target_room)
     {
         std::cout << "Room doesnt exist! Please create a room!" << std::endl;
+        return;
     }
     int device_type;
 
@@ -142,12 +143,19 @@ void DeviceManager::AddRoomDevice()
     std::cout << "[ID:5 - DoorLock]" << std::endl;
     std::cout << "Insert the ID of the device you want to add: ";
     std::cin >> device_type;
-
+    if (device_type < 1 || device_type > 5)
+    {
+        std::cout << "Invalid device type! Please try again!" << std::endl;
+        return;
+    }
     int id;
     std::string device_name, device_brand;
-    std::cout << "Device ID:" << id, std::cin >> id;
-    std::cout << "Device Name:" << device_name, std::cin >> device_name;
-    std::cout << "Device Brand:" << device_brand, std::cin >> device_brand;
+    std::cout << "Device ID:";
+    std::cin >> id;
+    std::cout << "Device Name:";
+    std::cin >> device_name;
+    std::cout << "Device Brand:";
+    std::cin >> device_brand;
 
     switch (device_type)
     {
