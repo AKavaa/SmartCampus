@@ -13,6 +13,7 @@ void DoorLock::interaction_event()
     std::cout << "1. Lock Door | 2. Unlock Door" << std::endl;
 
     std::cin >> choice;
+    std::cin.ignore(1000, '\n');
 
     if (choice == 1)
     {
@@ -23,7 +24,7 @@ void DoorLock::interaction_event()
     {
         locked = false;
         std::cout << "Enter the username who unlocked the door: ";
-        std::cin >> last_opened_by;
+        std::getline(std::cin, last_opened_by);
         std::cout << "Door was unlocked by: " << last_opened_by << std::endl;
     }
     else
@@ -49,6 +50,7 @@ void DoorLock::EditDevice()
     std::cout << "2. Change last opened by user" << std::endl;
     std::cout << "Choose an option: ";
     std::cin >> choice;
+    std::cin.ignore(1000, '\n');
 
     switch (choice)
     {
@@ -59,7 +61,7 @@ void DoorLock::EditDevice()
 
     case 2:
         std::cout << "Enter new username: ";
-        std::cin >> last_opened_by;
+        std::getline(std::cin, last_opened_by);
         std::cout << "Updated succesfully!" << std::endl;
         break;
 
