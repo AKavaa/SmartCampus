@@ -109,6 +109,56 @@ void DeviceManager::LoadFromFile()
     }
 }
 
+void DeviceManager::RemoveRoomDevice()
+{
+    std::string roomName;
+    std::cout << "Type the name of the room you want to remove the device from: (eg.SecurityRoom, Reception, MainHall):";
+    std::getline(std::cin, roomName);
+
+    Room *target_room = nullptr;
+
+    for (auto &r : room)
+    {
+        if (r->room_name == roomName)
+        {
+            target_room = r.get();
+            break;
+        }
+    }
+
+    // Room doesnt exist
+    if (!target_room)
+    {
+        std::cout << "Room doesnt exist!" << std::endl;
+        return;
+    }
+
+    int target_id;
+    std::cout << "Enter the ID of the device you want to remove from" << roomName << ": ";
+    std::cin >> target_id;
+
+    bool found = false;
+    for (auto device = target_room->room_devices.begin(); device != target_room->room_devices.end();)
+    {
+        // dereferencing the device iterator to get the unique pointer and after accessing the device object
+        if ((*device)->Get_id() == target_id)
+        {
+            device = target_room->room_devices.erase(device); // deletes the specific device which has the id that the user inputted, frees memory
+
+            std::cout << "Device with ID: " << target_id << " was deleted succesfully!" << std::endl;
+            found = true;
+        }
+        else
+        {
+            device++; // iterator advances to the next device, not possibility of crash
+        }
+    }
+    if (!found)
+    {
+        std::cout << "Couldn't find a device with ID " << target_id << "inside " << roomName << "." << std::endl;
+    }
+}
+
 void DeviceManager::AddRoomDevice()
 {
 
@@ -563,7 +613,8 @@ void DeviceManager::ShowMenu()
     std::cout << "11. Create room" << std::endl;
     std::cout << "12. View all rooms" << std::endl;
     std::cout << "13. Add device inside a room" << std::endl;
-    std::cout << "14. Exit" << std::endl;
+    std::cout << "14. Remove device inside a room" << std::endl;
+    std::cout << "15. Exit" << std::endl;
     std::cout << "Choose an option:";
 }
 
@@ -665,8 +716,11 @@ void DeviceManager::ChoiceHandling(int choice)
     case 13:
         AddRoomDevice();
         break;
-
     case 14:
+        RemoveRoomDevice();
+        break;
+
+    case 15:
         std::cout << "Program Exited.." << std::endl;
         exit(0);
         return;

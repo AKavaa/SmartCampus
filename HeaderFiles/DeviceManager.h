@@ -48,6 +48,7 @@ public:
     void ViewAllRooms();
     void LoadFromFile();
     void AddRoomDevice();
+    void RemoveRoomDevice();
 
     // will be showing the menu for the Smart Campus
     void ShowMenu();
