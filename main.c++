@@ -9,8 +9,7 @@ using namespace std;
 
 int main()
 {
-
     DeviceManager manager;
-
     manager.RunProgram();
+    return 0;
 }
