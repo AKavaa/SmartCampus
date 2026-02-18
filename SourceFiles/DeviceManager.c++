@@ -543,7 +543,7 @@ void DeviceManager::EditDevice()
         if (dev->Get_id() == target_id)
         {
             dev->EditDevice();
-            std::cout << "Devices edited succesfully!" << std::endl;
+            std::cout << "Device edited succesfully!" << std::endl;
         }
     }
 }

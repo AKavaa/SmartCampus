@@ -38,7 +38,16 @@ void AirConditioning::EditDevice()
 {
 
     std::cout << "Editing Air Condition" << std::endl;
-    std::cout << "Set a new temperature: " << std::endl;
-    std::cin >> target_temperature;
-    std::cout << "New temperature: " << target_temperature << "°C" << std::endl;
+    std::cout << "Set a new temperature (16 - 32 °C): ";
+    int new_temp;
+    std::cin >> new_temp;
+    if (new_temp >= 16 && new_temp <= 32)
+    {
+        target_temperature = new_temp; // validation checks
+        std::cout << "Target Temperature set to: " << target_temperature << "°C" << std::endl;
+    }
+    else
+    {
+        std::cout << "Invalid Temperature..Try again!" << std::endl;
+    }
 }
