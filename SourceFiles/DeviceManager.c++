@@ -572,6 +572,8 @@ void DeviceManager::ActivateAllDevices()
         for (auto &d : r->room_devices)
         {
             d->Activate();
+
+            std::cout << "\n";
         }
     }
     std::cout << "\n\nAll devices across the campus are activated!" << std::endl;
@@ -591,6 +593,7 @@ void DeviceManager::DeactivateAllDevices()
         for (auto &d : r->room_devices)
         {
             d->Deactivate();
+            std::cout << "\n";
         }
     }
     std::cout << "\n\nAll devices across the campus are deactivated!" << std::endl;
