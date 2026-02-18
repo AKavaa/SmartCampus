@@ -15,13 +15,7 @@ void SecurityCamera::interaction_event()
 void SecurityCamera::ViewInfo()
 {
 
-    Device::ViewInfo(); // shows other details of a the device
-
-    // if (!status)
-    // {
-    //     std::cout << "Current device is inactive!" << std::endl;
-    //     return;
-    // }
+    Device::ViewInfo(); // shows information about the device
 
     std::cout << "Camera viewing:" << device_name << std::endl;
     std::cout << "Camera Quality:" << camera_quality << std::endl;

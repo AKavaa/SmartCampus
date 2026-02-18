@@ -16,7 +16,7 @@ To get the extra points for design, I implemented these four patterns:
 
 1. **Strategy Pattern:** This is in the interaction_event(). It lets me call one function on any device, but the result changes depending on if it's a Camera or a Light.
 2. **Composite Pattern:** This is the Hybrid structure. My code treats individual global devices and the devices inside Rooms as one big system.
-3. **Factory Logic:** In LoadFromFile, the code looks at the Type string (like Projector) and decides which specific object to create.
+3. **Factory Pattern:** In LoadFromFile, the code looks at the Type string (like Projector) and decides which specific object to create.
 4. **Iterator Pattern:** I used this in the DeleteDevice function to safely move through the vectors without the program crashing.
 
 ## How to Run

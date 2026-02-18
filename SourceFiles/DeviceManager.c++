@@ -49,7 +49,7 @@ void DeviceManager::RunProgram()
 }
 
 // DESIGN PATTERN: factory method
-//  The system reads and extract information form the file
+//  The system reads and extract information from the file
 //  and this function is acting as a factory, deciding which device will be
 //  initialiased based on the string read from the file
 void DeviceManager::LoadFromFile()
@@ -75,11 +75,10 @@ void DeviceManager::LoadFromFile()
         std::getline(ss, extraInfo);
 
         // This is the conversion of int into the string so there is no logical errors
-        int dev_id = std::stoi(ID);
+        int dev_id = std::stoi(ID); // stoi -> convert integer(int) to string
         Room *target_room = nullptr;
 
         // Create a Room or finding a room
-
         // searching existing room
         for (auto &r : room)
         {

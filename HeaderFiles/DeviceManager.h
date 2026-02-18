@@ -34,8 +34,8 @@ private:
     std::vector<std::unique_ptr<Room>> room;
 
 public:
-    // calling this in main and the program will be running
-    void RunProgram();
+    void RunProgram(); // calling this in main and the program will be running
+    // handling each behavior with switch case inside the DeviceManager file
     void ActivateAllDevices();
     void DeactivateAllDevices();
     void AddDevice();
