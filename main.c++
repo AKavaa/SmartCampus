@@ -1,3 +1,6 @@
+// Aleksander Kavaleuskiy
+// G21251410
+
 #include <iostream>
 #include <string>
 
