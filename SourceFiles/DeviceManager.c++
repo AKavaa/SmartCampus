@@ -517,7 +517,7 @@ void DeviceManager::DeleteDevice()
     std::cout << "[ID:3 - Projector]" << std::endl;
     std::cout << "[ID:4 - RoomLighting]" << std::endl;
     std::cout << "[ID:5 - DoorLock]" << std::endl;
-    std::cout << "Select the device you want to delete :";
+    std::cout << "Select the device or the ID of the device you want to delete :";
     std::cin >> target_id;
 
     // looping through the vector
@@ -555,7 +555,7 @@ void DeviceManager::EditDevice()
         if (dev->Get_id() == target_id)
         {
             dev->EditDevice();
-                }
+        }
     }
 }
 
