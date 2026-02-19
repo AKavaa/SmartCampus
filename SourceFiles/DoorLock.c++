@@ -6,7 +6,7 @@ DoorLock::DoorLock(bool locked, std::string last_opened_by, unsigned int id, std
 void DoorLock::interaction_event()
 {
     std::cout << "Door Status: " << (locked ? "Locked" : "Unlocked") << std::endl;
-    std::cout << "State your username: ";
+    std::cout << "State your username: " << last_opened_by << std::endl;
     std::cout << "Last opened by: " << last_opened_by << std::endl;
 
     int choice;
