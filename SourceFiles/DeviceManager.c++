@@ -9,6 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 
 // Creating default objects and adding them into the device vector using a unique pointer
 // Unique pointers automatically manage memory and push_back adds the devices into the vector
@@ -239,6 +240,7 @@ void DeviceManager::ViewAllRooms()
         return;
     }
 
+    std::cout << "\n";
     std::cout << "ROOM VIEW" << std::endl;
 
     // loop through each room
@@ -353,7 +355,17 @@ void DeviceManager::DeviceSearch()
             break;
 
         case 3:
-            target_device->CheckConnection(); // Check connection
+            for (auto &dev : devices)
+            {
+                // loops through the devices, finds the exact device and checks the current state
+                if (dev->Get_id() == deviceSearch_id)
+                {
+                    bool current_state = dev->CheckConnection();
+                    std::string cur_state = current_state ? "Active" : "Inactivate";
+                    std::cout << cur_state << std::endl;
+                }
+
+            } // Check connection
             break;
 
         case 4:
