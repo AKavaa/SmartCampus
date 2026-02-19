@@ -47,7 +47,7 @@ void DoorLock::EditDevice()
 
     std::cout << "Editing Door Lock" << std::endl;
     std::cout << "1. Change the Lock State" << std::endl;
-    std::cout << "2. Change last opened by user" << std::endl;
+    std::cout << "2. Change last opened (username)" << std::endl;
     std::cout << "Choose an option: ";
     std::cin >> choice;
     std::cin.ignore(1000, '\n');
