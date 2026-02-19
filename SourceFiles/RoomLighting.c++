@@ -18,14 +18,17 @@ void RoomLighting::interaction_event()
     unsigned int new_brightness_level;
     std::cin >> new_brightness_level;
 
-    if (new_brightness_level > 100)
+    if (new_brightness_level > 100 || new_brightness_level < 0)
+    {
+        std::cout << "Brightness is out of range, please try again!" << std::endl;
+    }
+    else
     {
         std::cout << "Brightness in range, Saving current input" << std::endl;
+        brightness_level = new_brightness_level;
+
+        std::cout << "New brightness level set to:" << brightness_level << std::endl;
     }
-
-    brightness_level = new_brightness_level;
-
-    std::cout << "New brightness level set to:" << brightness_level << std::endl;
 }
 
 void RoomLighting::ViewInfo()
@@ -36,7 +39,20 @@ void RoomLighting::ViewInfo()
 
 void RoomLighting::EditDevice()
 {
+    unsigned int new_brightness_level;
     std::cout << "Editing Room Lighting" << std::endl;
     std::cout << "Enter new brightness level(0-100%): ";
-    std::cin >> brightness_level;
+    std::cin >> new_brightness_level;
+
+    if (new_brightness_level > 100 || new_brightness_level < 0)
+    {
+        std::cout << "Brightness is out of range, please try again!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Brightness in range, Saving current input" << std::endl;
+        brightness_level = new_brightness_level;
+
+        std::cout << "New brightness level set to: " << brightness_level << "%" << std::endl;
+    }
 }
