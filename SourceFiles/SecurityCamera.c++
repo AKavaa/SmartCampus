@@ -24,11 +24,55 @@ void SecurityCamera::ViewInfo()
 
 void SecurityCamera::EditDevice()
 {
-
+    int choice;
     std::cout << "Editing Security Camera" << std::endl;
     std::cout << "Input new Camera resolution : " << std::endl;
-    std::cin >> camera_quality;
+    std::cout << "1. 4K" << std::endl;
+    std::cout << "2. 1080p" << std::endl;
+    std::cout << "3. 720p" << std::endl;
+    std::cout << "Enter Input Source:";
+    std::cin >> choice;
 
-    std::cout << "Enter the new power supply: " << std::endl;
-    std::cin >> power;
+    switch (choice)
+    {
+    case 1:
+        camera_quality = "4K";
+        break;
+    case 2:
+        camera_quality = "1080p";
+        break;
+    case 3:
+        camera_quality = "720p";
+        break;
+
+    default:
+        std::cout << "Wrong input try again!" << std::endl;
+        break;
+    }
+
+    std::cout << "Enter the new power source: " << std::endl;
+    std::cout << "1. Battery" << std::endl;
+    std::cout << "2. Wireless" << std::endl;
+    std::cout << "3. Solar Battery" << std::endl;
+    std::cout << "Enter Input Source:";
+    std::cin >> choice;
+
+    switch (choice)
+    {
+    case 1:
+        power = "Battery";
+        break;
+    case 2:
+        power = "Wireless";
+        break;
+    case 3:
+        power = "Solar Battery";
+        break;
+
+    default:
+        std::cout << "Wrong input try again!" << std::endl;
+        break;
+    }
+
+    std::cout << "Changed succesfully saved!" << std::endl;
 }
